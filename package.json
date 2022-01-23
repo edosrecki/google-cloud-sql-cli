@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "google-cloud-sql",
-  "version": "0.0.0-dev",
+  "version": "1.0.0",
   "description": "Connect to private Google Cloud SQL instance through Cloud SQL Auth Proxy running in Kubernetes.",
   "license": "UNLICENSED",
   "author": "Dinko Osrecki <dinko.osrecki@emarsys.com>",
