@@ -1,19 +1,23 @@
-import { fetchGoogleCloudSqlInstances } from '../../../lib/gcloud/sql-instances'
+import { pick } from 'lodash'
+import {
+  fetchGoogleCloudSqlInstances,
+  GoogleCloudSqlInstance,
+} from '../../../lib/gcloud/sql-instances'
 import { ConfigurationCreateAnswers } from '../../../lib/types'
-import { search } from '../../../lib/util/search'
+import { searchByKey } from '../../../lib/util/search'
 
-const formatInstance = (connectionName: string) => {
-  const [, region, name] = connectionName.split(':')
+const formatInstance = (instance: GoogleCloudSqlInstance) => {
+  const { name, region } = instance
   return {
     name: `${name} (${region})`,
     short: name,
-    value: connectionName,
+    value: pick(instance, 'connectionName', 'port'),
   }
 }
 
 const source = (answers: ConfigurationCreateAnswers, input?: string) => {
   const instances = fetchGoogleCloudSqlInstances(answers.googleCloudProject)
-  const filtered = search(instances, input)
+  const filtered = searchByKey(instances, 'connectionName', input)
 
   return filtered.map(formatInstance)
 }
