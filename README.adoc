@@ -50,7 +50,7 @@ _Package_ sections.
 # Help
 google-cloud-sql help
 
-# Create configuration
+# Create (or override existing) configuration
 google-cloud-sql configurations create
 
 # Run configuration
