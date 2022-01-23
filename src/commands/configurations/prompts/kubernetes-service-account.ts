@@ -3,7 +3,10 @@ import { ConfigurationCreateAnswers } from '../../../lib/types'
 import { search } from '../../../lib/util/search'
 
 const source = (answers: ConfigurationCreateAnswers, input?: string) => {
-  const instances = fetchKubernetesServiceAccounts(answers.kubernetesNamespace)
+  const instances = fetchKubernetesServiceAccounts(
+    answers.kubernetesContext,
+    answers.kubernetesNamespace
+  )
   return search(instances, input)
 }
 
