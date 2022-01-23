@@ -1,6 +1,5 @@
 import exitHook from 'exit-hook'
 import { omit } from 'lodash'
-import { useKubernetesContext } from '../kubectl/contexts'
 import {
   deletePod,
   portForward,
