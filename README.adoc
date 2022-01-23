@@ -1,0 +1,83 @@
+:toc: macro
+:toc-title:
+:toclevels: 10
+
+= ⛅ google-cloud-sql
+
+image:https://img.shields.io/github/package-json/v/edosrecki/google-cloud-sql-cli/release?color=blue&label=google-cloud-sql["google-cloud-sql CLI Version"]
+image:https://img.shields.io/github/workflow/status/edosrecki/google-cloud-sql-cli/Continuous Integration["Build Status", link="https://github.com/edosrecki/google-cloud-sql-cli/actions"]
+
+A CLI app which establishes a connection to a private Google Cloud SQL instance and port-forwards it to a local machine.
+
+Connection is established by running a Google Cloud SQL Auth Proxy pod in a Google Kubernetes Engine cluster which runs in the same VPC network as the private Cloud SQL instance. Connection is then port-forwarded to the local machine, where a user can connect to the instance on localhost. Configurations in the app can be saved for practical future usage.
+
+The app relies on local `gcloud` and `kubectl` commands which have to be configured and authenticated with the proper Google Cloud user and Kubernetes cluster.
+
+---
+
+toc::[]
+
+== Install
+=== Homebrew
+[source,bash]
+----
+brew install edosrecki/tools/google-cloud-sql
+
+# Update
+brew upgrade google-cloud-sql
+----
+
+=== Releases
+Download a corresponding distribution from https://github.com/edosrecki/google-cloud-sql-cli/releases[Releases] and add
+the executable to your `PATH`.
+
+=== Build from source
+Build the app from source by building and packaging it manually: see _Build_ and
+_Package_ sections.
+
+== Use
+=== Prerequisites
+* Install https://cloud.google.com/sdk/docs/install[`gcloud`] tool
+* Install https://kubernetes.io/docs/tasks/tools/#kubectl[`kubectl`] tool
+* Authenticate to Google Cloud: `gcloud auth login`
+* Get GKE cluster credentials: `gcloud container clusters get-credentials`
+
+=== Run
+[source,bash]
+----
+# Help
+google-cloud-sql help
+
+# Create configuration
+google-cloud-sql configurations create
+
+# Run configuration
+google-cloud-sql configurations run
+
+## Connect to the instance on localhost
+psql -h localhost -p <LOCAL_PORT> -U <USER> 
+----
+
+== Build
+[source,bash]
+----
+npm run clean
+npm run build
+----
+
+== Package
+=== Pre-configured
+Package the app for Node.JS 16 on MacOS, Linux, and Windows.
+
+[source,bash]
+----
+npm run bundle
+----
+
+=== Manual
+See https://www.npmjs.com/package/pkg#targets[pkg] for details.
+
+[source,bash]
+----
+npx pkg <NODE_RANGE>-<PLATFORM>-<ARCH>
+----
