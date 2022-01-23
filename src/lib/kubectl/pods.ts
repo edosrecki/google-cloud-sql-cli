@@ -6,6 +6,8 @@ type CloudSqlProxyPod = {
   namespace: string
   serviceAccount: string
   instance: string
+  localPort: number
+  remotePort: number
 }
 
 export const runCloudSqlProxyPod = (pod: CloudSqlProxyPod): string => {
@@ -16,7 +18,7 @@ export const runCloudSqlProxyPod = (pod: CloudSqlProxyPod): string => {
       --serviceaccount=${pod.serviceAccount} \
       --labels=app=google-cloud-sql \
       ${pod.name} \
-      -- /cloud_sql_proxy -ip_address_types=PRIVATE -instances=${pod.instance}=tcp:5432
+      -- /cloud_sql_proxy -ip_address_types=PRIVATE -instances=${pod.instance}=tcp:${pod.remotePort}
   `)
 }
 
@@ -38,10 +40,10 @@ export const waitForPodReady = (pod: string, namespace: string) => {
   console.log(`Pod '${bold(cyan(pod))}' is ready.`)
 }
 
-export const portForward = (pod: string, namespace: string, port: number) => {
-  console.log(`Starting port forwarding to pod '${bold(cyan(pod))}'.`)
+export const portForward = (pod: CloudSqlProxyPod) => {
+  console.log(`Starting port forwarding to pod '${bold(cyan(pod.name))}'.`)
   execCommandAttached(`
-    kubectl port-forward ${pod} ${port}:5432 \
-      --namespace=${namespace}
+    kubectl port-forward ${pod.name} ${pod.localPort}:${pod.remotePort} \
+      --namespace=${pod.namespace}
   `)
 }

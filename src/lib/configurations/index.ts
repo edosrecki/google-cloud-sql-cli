@@ -1,5 +1,5 @@
-import { omit } from 'lodash'
 import exitHook from 'exit-hook'
+import { omit } from 'lodash'
 import {
   deletePod,
   portForward,
@@ -8,6 +8,7 @@ import {
 } from '../kubectl/pods'
 import { Configuration, ConfigurationCreateAnswers } from '../types'
 import { appendOrReplaceByKey, deleteByKey } from '../util/array'
+import { randomString } from '../util/string'
 import { store } from './store'
 
 const storeKey = 'configurations' as const
@@ -33,19 +34,20 @@ export const deleteConfiguration = (configuratioName: string): void => {
 }
 
 export const execConfiguration = (configuration: Configuration) => {
-  const name = `sql-proxy-${configuration.configurationName}`
-  const {
-    kubernetesNamespace: namespace,
-    kubernetesServiceAccount: serviceAccount,
-    googleCloudSqlInstance: instance,
-    localPort,
-  } = configuration
+  const pod = {
+    name: `sql-proxy-${configuration.configurationName}-${randomString()}`,
+    namespace: configuration.kubernetesNamespace,
+    serviceAccount: configuration.kubernetesServiceAccount,
+    instance: configuration.googleCloudSqlInstance.connectionName,
+    localPort: configuration.localPort,
+    remotePort: configuration.googleCloudSqlInstance.port,
+  }
 
   exitHook(() => {
-    deletePod(name, namespace)
+    deletePod(pod.name, pod.namespace)
   })
 
-  runCloudSqlProxyPod({ name, namespace, serviceAccount, instance })
-  waitForPodReady(name, namespace)
-  portForward(name, namespace, localPort)
+  runCloudSqlProxyPod(pod)
+  waitForPodReady(pod.name, pod.namespace)
+  portForward(pod)
 }
