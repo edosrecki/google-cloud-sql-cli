@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.0.2...v1.1.0) (2022-01-23)
+
+
+### Features
+
+* support MySQL and SQL Server ([7ff7359](https://github.com/edosrecki/google-cloud-sql-cli/commit/7ff73599ce5ccf55232e1c32891d71a7b0232c79))
+
 ## [1.0.2](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.0.1...v1.0.2) (2022-01-23)
 
 
