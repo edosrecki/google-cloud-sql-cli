@@ -1,0 +1,54 @@
+{
+  "branches": ["release"],
+  "plugins": [
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "releaseRules": [
+          {
+            "type": "chore",
+            "release": "patch"
+          }
+        ]
+      }
+    ],
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    "@semantic-release/npm",
+    "@semantic-release/git",
+    [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "./tools/package-google-cloud-sql.sh ${nextRelease.version}"
+      }
+    ],
+    [
+      "@semantic-release/github",
+      {
+        "assets": [
+          {
+            "path": "bin/google-cloud-sql-linux.tar.gz",
+            "name": "google-cloud-sql-linux-${nextRelease.version}.tar.gz",
+            "label": "Linux distribution"
+          },
+          {
+            "path": "bin/google-cloud-sql-macos.tar.gz",
+            "name": "google-cloud-sql-macos-${nextRelease.version}.tar.gz",
+            "label": "MacOS distribution"
+          },
+          {
+            "path": "bin/google-cloud-sql-win.tar.gz",
+            "name": "google-cloud-sql-win-${nextRelease.version}.tar.gz",
+            "label": "Windows distribution"
+          }
+        ]
+      }
+    ],
+    [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "./tools/publish-brew-formula.sh ${nextRelease.version}"
+      }
+    ]
+  ]
+}

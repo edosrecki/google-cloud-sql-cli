@@ -1,16 +1,17 @@
-name: Continuous Integration
+name: Continuous Deployment
 
 on:
   push:
-    branches-ignore:
-      - 'release'
-  pull_request:
     branches:
-      - '*'
+      - 'release'
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
 
 jobs:
   build:
-    name: Build app
+    name: Build and deploy app
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -40,4 +41,4 @@ jobs:
         run: npm run lint
 
       - name: Build
-        run: npm run bundle
+        run: npx semantic-release
