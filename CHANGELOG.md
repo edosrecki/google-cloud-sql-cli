@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.2.0...v1.3.0) (2022-01-23)
+
+
+### Features
+
+* alias create command as edit ([a6052f7](https://github.com/edosrecki/google-cloud-sql-cli/commit/a6052f7be500769211bf7c615398dfe4f87bdf6d))
+
 # [1.2.0](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.1.1...v1.2.0) (2022-01-23)
 
 
