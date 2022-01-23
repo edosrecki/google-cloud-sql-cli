@@ -57,7 +57,7 @@ google-cloud-sql configurations create
 google-cloud-sql configurations run
 
 ## Connect to the instance on localhost
-psql -h localhost -p <LOCAL_PORT> -U <USER> 
+psql -h localhost -p $LOCAL_PORT -U $USER
 ----
 
 == Build
