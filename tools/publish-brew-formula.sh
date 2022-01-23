@@ -12,7 +12,7 @@ git config user.name "Dinko Osrecki"
 
 cat <<EOF > google-cloud-sql.rb
 class GoogleCloudSql < Formula
-  desc ""
+  desc "Connect to private Google Cloud SQL instance through Cloud SQL Auth Proxy running in GKE cluster."
   homepage "https://github.com/edosrecki/google-cloud-sql-cli"
   url "$url"
   sha256 "$checksum"
