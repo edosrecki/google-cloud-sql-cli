@@ -4,7 +4,7 @@ version="$1"
 url="https://github.com/edosrecki/google-cloud-sql-cli/releases/download/v$version/google-cloud-sql-macos-$version.tar.gz"
 checksum=$(shasum -a 256 bin/google-cloud-sql-macos.tar.gz | awk '{ print $1 }')
 
-git clone "https://${GITHUB_TOKEN}@github.com/edosrecki/homebrew-tools.git"
+git clone "https://${HOMEBREW_TOOLS_TOKEN}@github.com/edosrecki/homebrew-tools.git"
 cd homebrew-tools
 
 git config user.email "${GIT_EMAIL}"

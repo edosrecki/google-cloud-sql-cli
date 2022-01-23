@@ -7,6 +7,7 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  HOMEBREW_TOOLS_TOKEN: ${{ secrets.HOMEBREW_TOOLS_TOKEN }}
   GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
 
 jobs:
@@ -40,5 +41,5 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Build
+      - name: Build & Deploy
         run: npx semantic-release
