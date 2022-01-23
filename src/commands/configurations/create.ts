@@ -1,4 +1,4 @@
-import { green, red, bold } from 'chalk'
+import { bold, green, red } from 'chalk'
 import inquirer from 'inquirer'
 import autocomplete from 'inquirer-autocomplete-prompt'
 import { saveConfiguration } from '../../lib/configurations'
@@ -6,9 +6,10 @@ import { ConfigurationCreateAnswers } from '../../lib/types'
 import { configurationNamePrompt } from './prompts/configuration-name'
 import { confirmationPrompt } from './prompts/confirmation'
 import { googleCloudProjectPrompt } from './prompts/google-cloud-project'
-import { googleCloudSqlInstancePrompt } from './prompts/google-cloud-sql-instances'
+import { googleCloudSqlInstancePrompt } from './prompts/google-cloud-sql-instance'
+import { kubernetesContextPrompt } from './prompts/kubernetes-context'
 import { kubernetesNamespacePrompt } from './prompts/kubernetes-namespace'
-import { kubernetesServiceAccountPrompt } from './prompts/kubernetes-service-accounts'
+import { kubernetesServiceAccountPrompt } from './prompts/kubernetes-service-account'
 import { localPortPrompt } from './prompts/local-port'
 
 export const createConfiguration = async () => {
@@ -17,6 +18,7 @@ export const createConfiguration = async () => {
   const answers = await inquirer.prompt<ConfigurationCreateAnswers>([
     googleCloudProjectPrompt,
     googleCloudSqlInstancePrompt,
+    kubernetesContextPrompt,
     kubernetesNamespacePrompt,
     kubernetesServiceAccountPrompt,
     localPortPrompt,

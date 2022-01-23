@@ -3,6 +3,7 @@ import { GoogleCloudSqlInstance } from './gcloud/sql-instances'
 export type Configuration = {
   configurationName: string
   googleCloudSqlInstance: Pick<GoogleCloudSqlInstance, 'connectionName' | 'port'>
+  kubernetesContext: string
   kubernetesNamespace: string
   kubernetesServiceAccount: string
   localPort: number

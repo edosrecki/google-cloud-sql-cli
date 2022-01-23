@@ -14,23 +14,16 @@ export const store = new Conf<Schema>({
       default: [],
       items: {
         type: 'object',
-        required: [
-          'configurationName',
-          'googleCloudSqlInstance',
-          'kubernetesNamespace',
-          'kubernetesServiceAccount',
-          'localPort',
-        ],
         properties: {
           configurationName: { type: 'string' },
           googleCloudSqlInstance: {
             type: 'object',
-            required: ['connectionName', 'port'],
             properties: {
               connectionName: { type: 'string' },
               port: { type: 'number' },
             },
           },
+          kubernetesContext: { type: 'string' },
           kubernetesNamespace: { type: 'string' },
           kubernetesServiceAccount: { type: 'string' },
           localPort: { type: 'number' },

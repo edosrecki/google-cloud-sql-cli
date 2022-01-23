@@ -3,6 +3,7 @@ import { execCommand, execCommandAttached } from '../util/exec'
 
 type CloudSqlProxyPod = {
   name: string
+  context: string
   namespace: string
   serviceAccount: string
   instance: string
@@ -14,7 +15,8 @@ export const runCloudSqlProxyPod = (pod: CloudSqlProxyPod): string => {
   return execCommand(`
     kubectl run \
       --image=gcr.io/cloudsql-docker/gce-proxy \
-      --namespace ${pod.namespace} \
+      --context="${pod.context}" \
+      --namespace="${pod.namespace}" \
       --serviceaccount=${pod.serviceAccount} \
       --labels=app=google-cloud-sql \
       ${pod.name} \
@@ -22,28 +24,32 @@ export const runCloudSqlProxyPod = (pod: CloudSqlProxyPod): string => {
   `)
 }
 
-export const deletePod = (pod: string, namespace: string) => {
-  console.log(`Deleting pod '${bold(cyan(pod))}'.`)
+export const deletePod = (pod: CloudSqlProxyPod) => {
+  console.log(`Deleting pod '${bold(cyan(pod.name))}'.`)
   execCommand(`
-    kubectl delete pod ${pod} --namespace=${namespace}
+    kubectl delete pod ${pod.name} \
+      --context="${pod.context}" \
+      --namespace="${pod.namespace}"
   `)
-  console.log(`Pod '${bold(cyan(pod))}' deleted.`)
+  console.log(`Pod '${bold(cyan(pod.name))}' deleted.`)
 }
 
-export const waitForPodReady = (pod: string, namespace: string) => {
-  console.log(`Waiting for pod '${bold(cyan(pod))}'.`)
+export const waitForPodReady = (pod: CloudSqlProxyPod) => {
+  console.log(`Waiting for pod '${bold(cyan(pod.name))}'.`)
   execCommand(`
-    kubectl wait pod ${pod} \
+    kubectl wait pod ${pod.name} \
       --for=condition=ready \
-      --namespace=${namespace}
+      --context="${pod.context}" \
+      --namespace="${pod.namespace}"
   `)
-  console.log(`Pod '${bold(cyan(pod))}' is ready.`)
+  console.log(`Pod '${bold(cyan(pod.name))}' is ready.`)
 }
 
 export const portForward = (pod: CloudSqlProxyPod) => {
   console.log(`Starting port forwarding to pod '${bold(cyan(pod.name))}'.`)
   execCommandAttached(`
     kubectl port-forward ${pod.name} ${pod.localPort}:${pod.remotePort} \
-      --namespace=${pod.namespace}
+      --context="${pod.context}" \
+      --namespace="${pod.namespace}"
   `)
 }
