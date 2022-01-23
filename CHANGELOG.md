@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.1.1...v1.2.0) (2022-01-23)
+
+
+### Features
+
+* support kubectl contexts ([753f711](https://github.com/edosrecki/google-cloud-sql-cli/commit/753f711d7087482141155b976ebf23fa5656793f))
+
 ## [1.1.1](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.1.0...v1.1.1) (2022-01-23)
 
 
