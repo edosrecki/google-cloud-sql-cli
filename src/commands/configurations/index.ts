@@ -11,7 +11,8 @@ export async function addConfigurationsCommands(program: Command) {
 
   configurations
     .command('create')
-    .description('create Cloud SQL Auth Proxy configuration')
+    .alias('edit')
+    .description('create or edit Cloud SQL Auth Proxy configuration')
     .action(async () => {
       try {
         await createConfiguration()
