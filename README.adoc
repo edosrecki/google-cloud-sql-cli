@@ -13,6 +13,8 @@ Connection is established by running a Google Cloud SQL Auth Proxy pod in a Goog
 
 The app relies on local `gcloud` and `kubectl` commands which have to be configured and authenticated with the proper Google Cloud user and Kubernetes cluster.
 
+image::screenshot.png[]
+
 ---
 
 toc::[]
