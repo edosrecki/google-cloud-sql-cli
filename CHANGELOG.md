@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.0.1...v1.0.2) (2022-01-23)
+
+
+### Bug Fixes
+
+* homebrew formula description ([d94f74f](https://github.com/edosrecki/google-cloud-sql-cli/commit/d94f74fd49774e8bd67c72fa96b515cd902eaf7b))
+
 ## [1.0.1](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.0.0...v1.0.1) (2022-01-23)
 
 
