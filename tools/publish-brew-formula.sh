@@ -16,7 +16,6 @@ class GoogleCloudSql < Formula
   homepage "https://github.com/edosrecki/google-cloud-sql-cli"
   url "$url"
   sha256 "$checksum"
-  bottle :unneeded
   def install
     bin.install "google-cloud-sql"
   end
