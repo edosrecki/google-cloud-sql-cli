@@ -46,7 +46,7 @@ export async function addConfigurationsCommands(program: Command) {
 
   configurations
     .command('run')
-    .argument('[name]', 'configuration name')
+    .argument('[name]', 'configuration name, optional')
     .description('run Cloud SQL Auth Proxy configuration')
     .action(async (name?: string) => {
       try {
