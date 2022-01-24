@@ -1,10 +1,11 @@
-const findIndexByKey = <T, K extends keyof T>(
+const findIndexByKey = <T, K extends keyof T>(items: T[], key: K, value: T[K]): number =>
+  items.findIndex((item) => item[key] === value)
+
+export const findByKey = <T, K extends keyof T>(
   items: T[],
   key: K,
   value: T[K]
-): number => {
-  return items.findIndex((item) => item[key] === value)
-}
+): T | undefined => items.find((item) => item[key] === value)
 
 export const appendOrReplaceByKey = <T>(items: T[], item: T, key: keyof T) => {
   const index = findIndexByKey(items, key, item[key])
