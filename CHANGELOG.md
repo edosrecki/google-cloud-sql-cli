@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.3.0...v1.4.0) (2022-01-24)
+
+
+### Features
+
+* add non-interactive run command ([0edb68d](https://github.com/edosrecki/google-cloud-sql-cli/commit/0edb68db764604b02e235fc7c19c568a0d0c942d))
+
 # [1.3.0](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.2.0...v1.3.0) (2022-01-23)
 
 
