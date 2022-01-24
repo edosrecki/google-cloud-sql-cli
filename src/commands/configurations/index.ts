@@ -2,7 +2,7 @@ import { Command } from 'commander'
 import { createConfiguration } from './create'
 import { showConfigurationPath } from './path'
 import { removeConfiguration } from './remove'
-import { runConfiguration } from './run'
+import { runConfiguration, runConfigurationByName } from './run'
 import { showConfiguration } from './show'
 
 export async function addConfigurationsCommands(program: Command) {
@@ -46,10 +46,15 @@ export async function addConfigurationsCommands(program: Command) {
 
   configurations
     .command('run')
+    .argument('[name]', 'configuration name')
     .description('run Cloud SQL Auth Proxy configuration')
-    .action(async () => {
+    .action(async (name?: string) => {
       try {
-        await runConfiguration()
+        if (name) {
+          runConfigurationByName(name)
+        } else {
+          await runConfiguration()
+        }
       } catch (error) {
         console.error(error)
       }

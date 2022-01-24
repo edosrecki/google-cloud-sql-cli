@@ -7,7 +7,7 @@ import {
   waitForPodReady,
 } from '../kubectl/pods'
 import { Configuration, ConfigurationCreateAnswers } from '../types'
-import { appendOrReplaceByKey, deleteByKey } from '../util/array'
+import { appendOrReplaceByKey, deleteByKey, findByKey } from '../util/array'
 import { randomString } from '../util/string'
 import { store } from './store'
 
@@ -18,6 +18,11 @@ const excludeProperties = ['googleCloudProject', 'confirmation'] as const
 export const configurationPath = store.path
 
 export const getConfigurations = (): Configuration[] => store.get(storeKey)
+
+export const getConfiguration = (name: string): Configuration | undefined => {
+  const configurations = getConfigurations()
+  return findByKey(configurations, searchKey, name)
+}
 
 export const saveConfiguration = (answers: ConfigurationCreateAnswers): void => {
   const configuration = omit(answers, excludeProperties)
