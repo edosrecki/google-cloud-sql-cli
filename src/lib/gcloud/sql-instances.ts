@@ -29,10 +29,10 @@ export const fetchGoogleCloudSqlInstances = memoize(
       gcloud sql instances list \
         --project=${project} \
         --format='csv(connectionName,databaseVersion)' \
-        --quiet \
-      | tail -n-1
+        --quiet
     `)
 
-    return instances.map(parseInstance)
+    // skip header line
+    return instances.slice(1).map(parseInstance)
   }
 )

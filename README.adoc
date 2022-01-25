@@ -43,6 +43,8 @@ _Package_ sections.
 * Install https://kubernetes.io/docs/tasks/tools/#kubectl[`kubectl`] tool
 * Authenticate to Google Cloud: `gcloud auth login`
 * Get GKE cluster credentials: `gcloud container clusters get-credentials`
+* https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity[Configure workload identity] in GKE namespace(s) and assign _Cloud SQL Client_ role in IAM for Cloud SQL instances that you want to use
+* Enable Cloud SQL Admin API for project(s) that host Cloud SQL instances that you want to use: `gcloud services enable sqladmin.googleapis.com --project=$PROJECT`
 
 === Run
 [source,bash]

@@ -3,9 +3,9 @@ import shell from 'shelljs'
 import { CommandExecutionError } from './error'
 
 export const execCommand = (command: string): string => {
-  const { stdout, stderr } = shell.exec(command, { silent: true })
+  const { stdout, stderr, code } = shell.exec(command, { silent: true })
 
-  if (stderr) {
+  if (code !== 0) {
     throw new CommandExecutionError(command, stderr, stdout)
   }
 
