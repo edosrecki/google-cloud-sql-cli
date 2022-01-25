@@ -1,4 +1,5 @@
 import { Command } from 'commander'
+import { logError } from '../../lib/util/error'
 import { createConfiguration } from './create'
 import { showConfigurationPath } from './path'
 import { removeConfiguration } from './remove'
@@ -17,7 +18,7 @@ export async function addConfigurationsCommands(program: Command) {
       try {
         await createConfiguration()
       } catch (error) {
-        console.error(error)
+        logError(error)
       }
     })
 
@@ -28,7 +29,7 @@ export async function addConfigurationsCommands(program: Command) {
       try {
         await showConfiguration()
       } catch (error) {
-        console.error(error)
+        logError(error)
       }
     })
 
@@ -40,7 +41,7 @@ export async function addConfigurationsCommands(program: Command) {
       try {
         await removeConfiguration()
       } catch (error) {
-        console.error(error)
+        logError(error)
       }
     })
 
@@ -56,7 +57,7 @@ export async function addConfigurationsCommands(program: Command) {
           await runConfiguration()
         }
       } catch (error) {
-        console.error(error)
+        logError(error)
       }
     })
 

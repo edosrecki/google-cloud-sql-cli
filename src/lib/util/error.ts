@@ -19,13 +19,17 @@ export const tryCatch = <A, B, R>(fn: (a: A, b: B) => R) => {
     try {
       return fn(a, b)
     } catch (error) {
-      if (error instanceof CommandExecutionError) {
-        console.error(error.data)
-      } else {
-        console.error(error)
-      }
+      logError(error)
 
       throw error
     }
+  }
+}
+
+export const logError = (error: unknown) => {
+  if (error instanceof CommandExecutionError) {
+    console.error(error.data)
+  } else {
+    console.error(error)
   }
 }
