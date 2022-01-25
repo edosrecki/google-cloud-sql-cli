@@ -1,6 +1,7 @@
 import { getConfigurations } from '../../../lib/configurations'
 import { Configuration, ConfigurationChooseAnswers } from '../../../lib/types'
 import { searchByKey } from '../../../lib/util/search'
+import { tryCatch } from '../../../lib/util/error'
 
 const formatConfiguration = (configuration: Configuration) => {
   return {
@@ -10,12 +11,12 @@ const formatConfiguration = (configuration: Configuration) => {
   }
 }
 
-const source = (answers: ConfigurationChooseAnswers, input?: string) => {
+const source = tryCatch((answers: ConfigurationChooseAnswers, input?: string) => {
   const configurations = getConfigurations()
   const filtered = searchByKey(configurations, 'configurationName', input)
 
   return filtered.map(formatConfiguration)
-}
+})
 
 export const configurationPrompt = {
   type: 'autocomplete',

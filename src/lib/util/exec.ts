@@ -1,8 +1,14 @@
 import { EOL } from 'os'
 import shell from 'shelljs'
+import { CommandExecutionError } from './error'
 
 export const execCommand = (command: string): string => {
-  const { stdout } = shell.exec(command, { silent: true })
+  const { stdout, stderr } = shell.exec(command, { silent: true })
+
+  if (stderr) {
+    throw new CommandExecutionError(command, stderr, stdout)
+  }
+
   return stdout.trim()
 }
 

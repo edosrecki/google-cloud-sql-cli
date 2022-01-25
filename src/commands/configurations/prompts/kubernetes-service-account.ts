@@ -1,14 +1,15 @@
 import { fetchKubernetesServiceAccounts } from '../../../lib/kubectl/service-accounts'
 import { ConfigurationCreateAnswers } from '../../../lib/types'
 import { search } from '../../../lib/util/search'
+import { tryCatch } from '../../../lib/util/error'
 
-const source = (answers: ConfigurationCreateAnswers, input?: string) => {
+const source = tryCatch((answers: ConfigurationCreateAnswers, input?: string) => {
   const instances = fetchKubernetesServiceAccounts(
     answers.kubernetesContext,
     answers.kubernetesNamespace
   )
   return search(instances, input)
-}
+})
 
 export const kubernetesServiceAccountPrompt = {
   type: 'autocomplete',
