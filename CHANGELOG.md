@@ -1,3 +1,11 @@
+## [1.5.1](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.5.0...v1.5.1) (2022-01-25)
+
+
+### Bug Fixes
+
+* configurations run fails ([6c7d84f](https://github.com/edosrecki/google-cloud-sql-cli/commit/6c7d84fb02580d287892a308ab32fce8af5e00e5))
+* throw error if cmd return code not 0 ([79ec7f9](https://github.com/edosrecki/google-cloud-sql-cli/commit/79ec7f9a70748e7fe07b577d583fb7c399bc010a))
+
 # [1.5.0](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.4.0...v1.5.0) (2022-01-25)
 
 
