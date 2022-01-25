@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.4.0...v1.5.0) (2022-01-25)
+
+
+### Features
+
+* print command errors to user ([7f11505](https://github.com/edosrecki/google-cloud-sql-cli/commit/7f11505c13ce9a89bbc790e571748e3d51b25271))
+
 # [1.4.0](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.3.0...v1.4.0) (2022-01-24)
 
 
