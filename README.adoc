@@ -59,6 +59,9 @@ google-cloud-sql configurations run
 # Run configuration (non-interactive mode)
 google-cloud-sql configurations run $NAME
 
+# HINT: Add alias
+alias myDbProd="google-cloud-sql configurations run $NAME"
+
 ## Connect to the instance on localhost
 psql -h localhost -p $LOCAL_PORT -U $USER
 
@@ -92,3 +95,6 @@ npx pkg <NODE_RANGE>-<PLATFORM>-<ARCH>
 
 == Deploy
 To deploy a new version of `google-cloud-sql` app, merge `master` branch into `release` branch.
+
+== Todo
+* Cache user's running pods, and alert user on next startup if they were not cleaned up on previous app exit.
