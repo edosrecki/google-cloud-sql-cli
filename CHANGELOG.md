@@ -1,3 +1,10 @@
+## [1.5.3](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.5.2...v1.5.3) (2022-01-26)
+
+
+### Bug Fixes
+
+* add shebang to index file ([40ddc86](https://github.com/edosrecki/google-cloud-sql-cli/commit/40ddc86a4c167e76e8dee294d71cd10d23ab0605))
+
 ## [1.5.2](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.5.1...v1.5.2) (2022-01-26)
 
 ## [1.5.1](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.5.0...v1.5.1) (2022-01-25)
