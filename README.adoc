@@ -99,4 +99,5 @@ npx pkg <NODE_RANGE>-<PLATFORM>-<ARCH>
 To deploy a new version of `google-cloud-sql` app, merge `master` branch into `release` branch.
 
 == Todo
+* https://www.npmjs.com/package/update-notifier[Notify user] when new version of the app is available
 * Cache user's running pods, and alert user on next startup if they were not cleaned up on previous app exit.
