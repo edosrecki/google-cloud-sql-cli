@@ -1,5 +1,4 @@
 {
-  "private": true,
   "name": "google-cloud-sql",
   "version": "0.0.0-dev",
   "description": "Connect to private Google Cloud SQL instance through Cloud SQL Auth Proxy running in GKE cluster.",
