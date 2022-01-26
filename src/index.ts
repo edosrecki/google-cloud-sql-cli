@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { Command } from 'commander'
 import { addConfigurationsCommands } from './commands/configurations'
 import { version } from './lib/version'
