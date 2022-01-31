@@ -1,3 +1,10 @@
+## [1.5.4](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.5.3...v1.5.4) (2022-01-31)
+
+
+### Bug Fixes
+
+* deploy new GitHub Release ([b4d9c94](https://github.com/edosrecki/google-cloud-sql-cli/commit/b4d9c94fa92c1aa8cb0a4b67b4d8ec73d4c332e7))
+
 ## [1.5.3](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.5.2...v1.5.3) (2022-01-26)
 
 
