@@ -96,7 +96,7 @@ npx pkg <NODE_RANGE>-<PLATFORM>-<ARCH>
 ----
 
 == Deploy
-To deploy a new version of `google-cloud-sql` app, https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow[manually run a "Continuous Deployment" worklow in GitHub Actions].
+To deploy a new version of `google-cloud-sql` app, manually run a https://github.com/edosrecki/google-cloud-sql-cli/actions/workflows/continuous-deployment.yml["Continuous Deployment"] worklow in GitHub Actions.
 
 == Todo
 * Add snap for Linux
