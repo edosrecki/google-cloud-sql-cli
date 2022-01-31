@@ -2,9 +2,12 @@
 
 import { Command } from 'commander'
 import { addConfigurationsCommands } from './commands/configurations'
+import { notifyForUpdates } from './lib/updates'
 import { version } from './lib/version'
 
 async function main() {
+  notifyForUpdates()
+
   const program = new Command()
   program.name('google-cloud-sql').version(version)
 

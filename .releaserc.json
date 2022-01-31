@@ -4,7 +4,6 @@
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
-    "@semantic-release/npm",
     "@semantic-release/git",
     [
       "@semantic-release/exec",
@@ -12,6 +11,7 @@
         "publishCmd": "./tools/package-google-cloud-sql.sh ${nextRelease.version}"
       }
     ],
+    "@semantic-release/npm",
     [
       "@semantic-release/github",
       {

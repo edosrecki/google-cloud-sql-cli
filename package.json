@@ -28,6 +28,7 @@
     "prettify-package-json": "prettier-package-json --write"
   },
   "dependencies": {
+    "boxen": "5.1.2",
     "chalk": "4.1.2",
     "commander": "8.3.0",
     "conf": "10.1.1",
@@ -37,7 +38,8 @@
     "inquirer-autocomplete-prompt": "1.4.0",
     "lodash": "4.17.21",
     "memoizee": "0.4.15",
-    "shelljs": "0.8.5"
+    "shelljs": "0.8.5",
+    "update-notifier": "5.1.0"
   },
   "devDependencies": {
     "@semantic-release/changelog": "6.0.1",
@@ -50,6 +52,7 @@
     "@types/memoizee": "0.4.7",
     "@types/node": "17.0.10",
     "@types/shelljs": "0.8.11",
+    "@types/update-notifier": "5.1.0",
     "@typescript-eslint/eslint-plugin": "5.10.0",
     "@typescript-eslint/parser": "5.10.0",
     "eslint": "8.7.0",
