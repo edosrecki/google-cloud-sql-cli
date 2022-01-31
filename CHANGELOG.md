@@ -1,3 +1,15 @@
+# [1.6.0](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.5.4...v1.6.0) (2022-01-31)
+
+
+### Bug Fixes
+
+* release from master branch ([9e63d7f](https://github.com/edosrecki/google-cloud-sql-cli/commit/9e63d7f8490c9b275b051de1de8a6091ca13e53a))
+
+
+### Features
+
+* add safe-to-evict pod annotation ([904fa26](https://github.com/edosrecki/google-cloud-sql-cli/commit/904fa26c4f5aaa380902ca66c1658225bc723f06))
+
 ## [1.5.4](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.5.3...v1.5.4) (2022-01-31)
 
 
