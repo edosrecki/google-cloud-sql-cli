@@ -99,5 +99,7 @@ npx pkg <NODE_RANGE>-<PLATFORM>-<ARCH>
 To deploy a new version of `google-cloud-sql` app, https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow[manually run a "Continuous Deployment" worklow in GitHub Actions].
 
 == Todo
+* Add snap for Linux
+* Add completions
 * https://www.npmjs.com/package/update-notifier[Notify user] when new version of the app is available
 * Cache user's running pods, and alert user on next startup if they were not cleaned up on previous app exit.

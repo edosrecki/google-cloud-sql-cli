@@ -17,7 +17,8 @@ export const runCloudSqlProxyPod = (pod: CloudSqlProxyPod): string => {
       --image=gcr.io/cloudsql-docker/gce-proxy \
       --context="${pod.context}" \
       --namespace="${pod.namespace}" \
-      --overrides='{"spec": {"serviceAccount": "${pod.serviceAccount}"}}' \
+      --serviceaccount="${pod.serviceAccount}" \
+      --annotations="cluster-autoscaler.kubernetes.io/safe-to-evict=true" \
       --labels=app=google-cloud-sql \
       ${pod.name} \
       -- /cloud_sql_proxy -ip_address_types=PRIVATE -instances=${pod.instance}=tcp:${pod.remotePort}
