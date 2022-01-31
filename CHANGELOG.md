@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.6.1...v1.7.0) (2022-01-31)
+
+
+### Features
+
+* add update notifier ([7be885c](https://github.com/edosrecki/google-cloud-sql-cli/commit/7be885cbc80da6ee529187c36d586ef6e7075b5c))
+
 ## [1.6.1](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.6.0...v1.6.1) (2022-01-31)
 
 
