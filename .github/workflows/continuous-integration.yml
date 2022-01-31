@@ -1,12 +1,6 @@
 name: Continuous Integration
 
-on:
-  push:
-    branches-ignore:
-      - 'release'
-  pull_request:
-    branches:
-      - '*'
+on: push
 
 jobs:
   build:
