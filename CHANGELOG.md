@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.6.0...v1.6.1) (2022-01-31)
+
+
+### Bug Fixes
+
+* **npm:** add .npmignore ([63405a4](https://github.com/edosrecki/google-cloud-sql-cli/commit/63405a4368dde9ea85a3637fb0d59eb258926699))
+
 # [1.6.0](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.5.4...v1.6.0) (2022-01-31)
 
 
