@@ -1,17 +1,7 @@
 {
   "branches": ["release"],
   "plugins": [
-    [
-      "@semantic-release/commit-analyzer",
-      {
-        "releaseRules": [
-          {
-            "type": "chore",
-            "release": "patch"
-          }
-        ]
-      }
-    ],
+    "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
     "@semantic-release/npm",
@@ -19,7 +9,7 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "./tools/package-google-cloud-sql.sh ${nextRelease.version}"
+        "publishCmd": "./tools/package-google-cloud-sql.sh ${nextRelease.version}"
       }
     ],
     [
@@ -47,7 +37,7 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "./tools/publish-brew-formula.sh ${nextRelease.version}"
+        "publishCmd": "./tools/publish-brew-formula.sh ${nextRelease.version}"
       }
     ]
   ]
