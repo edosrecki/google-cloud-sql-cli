@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.7.0...v1.7.1) (2022-05-18)
+
+
+### Bug Fixes
+
+* service-account flag removed in latest kubectl ([1be49fd](https://github.com/edosrecki/google-cloud-sql-cli/commit/1be49fd859d9ca472b58f582080e49be762e0374))
+
 # [1.7.0](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.6.1...v1.7.0) (2022-01-31)
 
 
