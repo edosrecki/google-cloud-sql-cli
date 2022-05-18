@@ -4,7 +4,7 @@
 
 = ⛅ google-cloud-sql
 
-image:https://img.shields.io/github/package-json/v/edosrecki/google-cloud-sql-cli/release?color=blue&label=google-cloud-sql["google-cloud-sql CLI Version"]
+image:https://img.shields.io/github/package-json/v/edosrecki/google-cloud-sql-cli/master?color=blue&label=google-cloud-sql["google-cloud-sql CLI Version"]
 image:https://img.shields.io/github/workflow/status/edosrecki/google-cloud-sql-cli/Continuous Integration["Build Status", link="https://github.com/edosrecki/google-cloud-sql-cli/actions"]
 
 A CLI app which establishes a connection to a private Google Cloud SQL instance and port-forwards it to a local machine.
