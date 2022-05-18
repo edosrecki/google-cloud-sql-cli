@@ -4,7 +4,7 @@ import { yellow, green, blue } from 'chalk'
 import { version } from './version'
 
 const name = 'google-cloud-sql'
-const oneWeekMs = 7 * 24 * 60 * 60 * 1000
+const oneDayMs = 24 * 60 * 60 * 1000
 
 export const notifyForUpdates = () => {
   const { update } = updateNotifier({
@@ -12,7 +12,7 @@ export const notifyForUpdates = () => {
       name,
       version,
     },
-    updateCheckInterval: oneWeekMs,
+    updateCheckInterval: oneDayMs,
   })
 
   if (update) {
