@@ -1,10 +1,10 @@
 import { Command } from 'commander'
-import { logError } from '../../lib/util/error'
-import { createConfiguration } from './create'
-import { showConfigurationPath } from './path'
-import { removeConfiguration } from './remove'
-import { runConfiguration, runConfigurationByName } from './run'
-import { showConfiguration } from './show'
+import { logError } from '../../lib/util/error.js'
+import { createConfiguration } from './create.js'
+import { showConfigurationPath } from './path.js'
+import { removeConfiguration } from './remove.js'
+import { runConfiguration, runConfigurationByName } from './run.js'
+import { showConfiguration } from './show.js'
 
 export async function addConfigurationsCommands(program: Command) {
   const configurations = new Command('configurations')

@@ -1,6 +1,6 @@
-import { EOL } from 'os'
+import { EOL } from 'node:os'
 import shell from 'shelljs'
-import { CommandExecutionError } from './error'
+import { CommandExecutionError } from './error.js'
 
 export const execCommand = (command: string): string => {
   const { stdout, stderr, code } = shell.exec(command, { silent: true })

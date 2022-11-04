@@ -1,15 +1,15 @@
 import exitHook from 'exit-hook'
-import { omit } from 'lodash'
+import _ from 'lodash'
 import {
   deletePod,
   portForward,
   runCloudSqlProxyPod,
   waitForPodReady,
-} from '../kubectl/pods'
-import { Configuration, ConfigurationCreateAnswers } from '../types'
-import { appendOrReplaceByKey, deleteByKey, findByKey } from '../util/array'
-import { randomString } from '../util/string'
-import { store } from './store'
+} from '../kubectl/pods.js'
+import { Configuration, ConfigurationCreateAnswers } from '../types.js'
+import { appendOrReplaceByKey, deleteByKey, findByKey } from '../util/array.js'
+import { randomString } from '../util/string.js'
+import { store } from './store.js'
 
 const storeKey = 'configurations' as const
 const searchKey = 'configurationName' as const
@@ -25,7 +25,7 @@ export const getConfiguration = (name: string): Configuration | undefined => {
 }
 
 export const saveConfiguration = (answers: ConfigurationCreateAnswers): void => {
-  const configuration = omit(answers, excludeProperties)
+  const configuration = _.omit(answers, excludeProperties)
 
   const configurations = store.get(storeKey)
   appendOrReplaceByKey(configurations, configuration, searchKey)
