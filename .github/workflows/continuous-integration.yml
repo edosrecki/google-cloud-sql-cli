@@ -8,24 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Read .nvmrc
-        id: nvmrc
-        run: echo "::set-output name=node::$(cat .nvmrc)"
-
-      - name: Use Node.js ${{ steps.nvmrc.outputs.node }}
-        uses: actions/setup-node@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: ${{ steps.nvmrc.outputs.node }}
-
-      - name: Read npm cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: node-cache-${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            node-cache-${{ runner.os }}-npm-
+          node-version-file: .nvmrc
+          cache: npm
 
       - name: Install packages
         run: npm ci

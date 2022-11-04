@@ -2,7 +2,7 @@
 
 version="$1"
 
-npx replace-in-file '0.0.0-dev' "$version" ./src/lib/version.ts
+npx -y replace-in-file '0.0.0-dev' "$version" ./src/lib/version.ts
 npm run bundle
 
 cd bin
