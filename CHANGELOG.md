@@ -1,3 +1,10 @@
+## [1.7.5](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.7.4...v1.7.5) (2022-11-04)
+
+
+### Bug Fixes
+
+* **release:** update package.json version ([64c349a](https://github.com/edosrecki/google-cloud-sql-cli/commit/64c349aaeb48645d114e71c531ccfd8bb860cc02))
+
 ## [1.7.4](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.7.3...v1.7.4) (2022-11-04)
 
 ## [1.7.3](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.7.2...v1.7.3) (2022-11-04)
