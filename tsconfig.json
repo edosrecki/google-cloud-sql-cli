@@ -5,6 +5,7 @@
     "src/**/*.ts"
   ],
   "compilerOptions": {
+    "module": "ESNext",
     "baseUrl": "./",
     "rootDir": "./src",
     "outDir": "./dist"

@@ -1,4 +1,4 @@
-import { GoogleCloudSqlInstance } from './gcloud/sql-instances'
+import { GoogleCloudSqlInstance } from './gcloud/sql-instances.js'
 
 export type Configuration = {
   configurationName: string
