@@ -1,18 +1,18 @@
-import _ from 'lodash'
+import { pick } from 'lodash'
 import {
   fetchGoogleCloudSqlInstances,
   GoogleCloudSqlInstance,
-} from '../../../lib/gcloud/sql-instances.js'
-import { ConfigurationCreateAnswers } from '../../../lib/types.js'
-import { searchByKey } from '../../../lib/util/search.js'
-import { tryCatch } from '../../../lib/util/error.js'
+} from '../../../lib/gcloud/sql-instances'
+import { ConfigurationCreateAnswers } from '../../../lib/types'
+import { searchByKey } from '../../../lib/util/search'
+import { tryCatch } from '../../../lib/util/error'
 
 const formatInstance = (instance: GoogleCloudSqlInstance) => {
   const { name, region } = instance
   return {
     name: `${name} (${region})`,
     short: name,
-    value: _.pick(instance, 'connectionName', 'port'),
+    value: pick(instance, 'connectionName', 'port'),
   }
 }
 

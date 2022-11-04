@@ -1,7 +1,7 @@
-import { fetchKubernetesNamespaces } from '../../../lib/kubectl/namespaces.js'
-import { ConfigurationCreateAnswers } from '../../../lib/types.js'
-import { search } from '../../../lib/util/search.js'
-import { tryCatch } from '../../../lib/util/error.js'
+import { fetchKubernetesNamespaces } from '../../../lib/kubectl/namespaces'
+import { ConfigurationCreateAnswers } from '../../../lib/types'
+import { search } from '../../../lib/util/search'
+import { tryCatch } from '../../../lib/util/error'
 
 const source = tryCatch((answers: ConfigurationCreateAnswers, input?: string) => {
   const instances = fetchKubernetesNamespaces(answers.kubernetesContext)

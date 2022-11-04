@@ -1,7 +1,7 @@
-import { fetchKubernetesServiceAccounts } from '../../../lib/kubectl/service-accounts.js'
-import { ConfigurationCreateAnswers } from '../../../lib/types.js'
-import { search } from '../../../lib/util/search.js'
-import { tryCatch } from '../../../lib/util/error.js'
+import { fetchKubernetesServiceAccounts } from '../../../lib/kubectl/service-accounts'
+import { ConfigurationCreateAnswers } from '../../../lib/types'
+import { search } from '../../../lib/util/search'
+import { tryCatch } from '../../../lib/util/error'
 
 const source = tryCatch((answers: ConfigurationCreateAnswers, input?: string) => {
   const instances = fetchKubernetesServiceAccounts(

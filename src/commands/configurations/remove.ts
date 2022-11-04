@@ -1,10 +1,10 @@
-import chalk from 'chalk'
+import { green, red, bold } from 'chalk'
 import inquirer from 'inquirer'
 import autocomplete from 'inquirer-autocomplete-prompt'
-import { deleteConfiguration } from '../../lib/configurations/index.js'
-import { ConfigurationChooseAnswers } from '../../lib/types.js'
-import { configurationPrompt } from './prompts/configuration.js'
-import { confirmationPrompt } from './prompts/confirmation.js'
+import { deleteConfiguration } from '../../lib/configurations'
+import { ConfigurationChooseAnswers } from '../../lib/types'
+import { configurationPrompt } from './prompts/configuration'
+import { confirmationPrompt } from './prompts/confirmation'
 
 export const removeConfiguration = async () => {
   inquirer.registerPrompt('autocomplete', autocomplete)
@@ -19,9 +19,9 @@ export const removeConfiguration = async () => {
     deleteConfiguration(configuration.configurationName)
 
     console.log(
-      chalk.green(`Deleted configuration '${chalk.bold(configuration.configurationName)}'.`)
+      green(`Deleted configuration '${bold(configuration.configurationName)}'.`)
     )
   } else {
-    console.log(chalk.red('You are excused.'))
+    console.log(red('You are excused.'))
   }
 }

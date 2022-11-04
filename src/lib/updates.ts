@@ -1,7 +1,7 @@
 import boxen from 'boxen'
 import updateNotifier from 'update-notifier'
-import chalk from 'chalk'
-import { version } from './version.js'
+import { yellow, green, blue } from 'chalk'
+import { version } from './version'
 
 const name = 'google-cloud-sql'
 const oneDayMs = 24 * 60 * 60 * 1000
@@ -17,9 +17,9 @@ export const notifyForUpdates = () => {
 
   if (update) {
     const text =
-      `${chalk.yellow(update.current)} ↦ ${chalk.green(update.latest)}\n\n` +
-      `${chalk.blue('brew')} upgrade ${name}\n` +
-      `${chalk.blue('npm')} i -g ${name}`
+      `${yellow(update.current)} ↦ ${green(update.latest)}\n\n` +
+      `${blue('brew')} upgrade ${name}\n` +
+      `${blue('npm')} i -g ${name}`
 
     const box = boxen(text, {
       title: 'Update Available',

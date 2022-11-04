@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander'
-import { addConfigurationsCommands } from './commands/configurations/index.js'
-import { notifyForUpdates } from './lib/updates.js'
-import { version } from './lib/version.js'
+import { addConfigurationsCommands } from './commands/configurations'
+import { notifyForUpdates } from './lib/updates'
+import { version } from './lib/version'
 
 async function main() {
   notifyForUpdates()

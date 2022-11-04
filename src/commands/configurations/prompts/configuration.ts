@@ -1,7 +1,7 @@
-import { getConfigurations } from '../../../lib/configurations/index.js'
-import { Configuration, ConfigurationChooseAnswers } from '../../../lib/types.js'
-import { searchByKey } from '../../../lib/util/search.js'
-import { tryCatch } from '../../../lib/util/error.js'
+import { getConfigurations } from '../../../lib/configurations'
+import { Configuration, ConfigurationChooseAnswers } from '../../../lib/types'
+import { searchByKey } from '../../../lib/util/search'
+import { tryCatch } from '../../../lib/util/error'
 
 const formatConfiguration = (configuration: Configuration) => {
   return {

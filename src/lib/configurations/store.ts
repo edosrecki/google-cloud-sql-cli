@@ -1,5 +1,5 @@
 import Conf from 'conf'
-import { Configuration } from '../types.js'
+import { Configuration } from '../types'
 
 type Schema = {
   configurations: Configuration[]
