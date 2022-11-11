@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.7.5...v1.8.0) (2022-11-11)
+
+
+### Features
+
+* support IAM login ([e8dcf6d](https://github.com/edosrecki/google-cloud-sql-cli/commit/e8dcf6d796984049e2a3b6a44b1ef458dd538c48))
+
 ## [1.7.5](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.7.4...v1.7.5) (2022-11-04)
 
 
