@@ -15,7 +15,7 @@ export const notifyForUpdates = () => {
     updateCheckInterval: oneDayMs,
   })
 
-  if (update) {
+  if (update && update.current !== update.latest) {
     const text =
       `${yellow(update.current)} ↦ ${green(update.latest)}\n\n` +
       `${blue('brew')} upgrade ${name}\n` +

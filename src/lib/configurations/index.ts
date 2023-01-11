@@ -1,5 +1,5 @@
 import exitHook from 'exit-hook'
-import { omit } from 'lodash'
+import { omit, kebabCase } from 'lodash'
 import {
   deletePod,
   portForward,
@@ -40,7 +40,7 @@ export const deleteConfiguration = (configuratioName: string): void => {
 
 export const execConfiguration = (configuration: Configuration) => {
   const pod = {
-    name: `sql-proxy-${configuration.configurationName}-${randomString()}`,
+    name: `sql-proxy-${kebabCase(configuration.configurationName)}-${randomString()}`,
     context: configuration.kubernetesContext,
     namespace: configuration.kubernetesNamespace,
     serviceAccount: configuration.kubernetesServiceAccount,
