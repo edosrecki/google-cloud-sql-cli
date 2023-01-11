@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.8.0...v1.8.1) (2023-01-11)
+
+
+### Bug Fixes
+
+* kebab case pod name on kubectl run ([e5253fe](https://github.com/edosrecki/google-cloud-sql-cli/commit/e5253fe3c7a0227d1323161255ea36c02a6ca672))
+
 # [1.8.0](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.7.5...v1.8.0) (2022-11-11)
 
 
