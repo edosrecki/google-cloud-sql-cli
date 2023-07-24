@@ -5,7 +5,7 @@
 = ⛅ google-cloud-sql
 
 image:https://img.shields.io/github/package-json/v/edosrecki/google-cloud-sql-cli/master?color=blue&label=google-cloud-sql["google-cloud-sql CLI Version"]
-image:https://img.shields.io/github/workflow/status/edosrecki/google-cloud-sql-cli/Continuous Integration["Build Status", link="https://github.com/edosrecki/google-cloud-sql-cli/actions"]
+image:https://img.shields.io/github/actions/workflow/status/edosrecki/google-cloud-sql-cli/continuous-integration.yml["Build Status", link="https://github.com/edosrecki/google-cloud-sql-cli/actions"]
 
 A CLI app which establishes a connection to a private Google Cloud SQL instance and port-forwards it to a local machine.
 
@@ -57,10 +57,8 @@ google-cloud-sql configurations create
 
 # Run configuration (interactive mode)
 google-cloud-sql configurations run
-
 # Run configuration (non-interactive mode)
 google-cloud-sql configurations run $NAME
-
 # HINT: Add alias
 alias myDbProd="google-cloud-sql configurations run $NAME"
 
