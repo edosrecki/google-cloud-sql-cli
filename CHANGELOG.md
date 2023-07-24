@@ -1,3 +1,5 @@
+## [1.8.2](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.8.1...v1.8.2) (2023-07-24)
+
 ## [1.8.1](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.8.0...v1.8.1) (2023-01-11)
 
 
