@@ -40,6 +40,7 @@ export const waitForPodReady = (pod: CloudSqlProxyPod) => {
   execCommand(`
     kubectl wait pod ${pod.name} \
       --for=condition=ready \
+      --timeout=300s \
       --context="${pod.context}" \
       --namespace="${pod.namespace}"
   `)
