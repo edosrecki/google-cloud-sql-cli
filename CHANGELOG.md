@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.8.2...v1.9.0) (2023-08-15)
+
+
+### Features
+
+* increase pod wait timeout to 5min ([b80736c](https://github.com/edosrecki/google-cloud-sql-cli/commit/b80736c486d28eaf1ce32c10de3b227b2a8054d8))
+
 ## [1.8.2](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.8.1...v1.8.2) (2023-07-24)
 
 ## [1.8.1](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.8.0...v1.8.1) (2023-01-11)
