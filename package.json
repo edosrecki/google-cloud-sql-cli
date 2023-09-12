@@ -42,7 +42,7 @@
     "lodash": "4.17.21",
     "memoizee": "0.4.15",
     "shelljs": "0.8.5",
-    "update-notifier": "5.1.0"
+    "update-notifier": "6.0.2"
   },
   "devDependencies": {
     "@semantic-release/changelog": "6.0.3",
@@ -55,7 +55,7 @@
     "@types/memoizee": "0.4.8",
     "@types/node": "16.18.39",
     "@types/shelljs": "0.8.12",
-    "@types/update-notifier": "5.1.0",
+    "@types/update-notifier": "6.0.5",
     "@typescript-eslint/eslint-plugin": "6.1.0",
     "@typescript-eslint/parser": "6.1.0",
     "eslint": "8.45.0",
