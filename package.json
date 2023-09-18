@@ -51,7 +51,7 @@
     "@tsconfig/node16": "16.1.0",
     "@types/inquirer": "8.2.6",
     "@types/inquirer-autocomplete-prompt": "2.0.0",
-    "@types/lodash": "4.14.195",
+    "@types/lodash": "4.14.198",
     "@types/memoizee": "0.4.8",
     "@types/node": "16.18.39",
     "@types/shelljs": "0.8.12",
