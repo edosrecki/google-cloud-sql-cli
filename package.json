@@ -64,7 +64,7 @@
     "pkg": "5.8.1",
     "prettier-package-json": "2.8.0",
     "rimraf": "5.0.1",
-    "semantic-release": "19.0.5",
+    "semantic-release": "22.0.5",
     "ts-node": "10.9.1",
     "typescript": "5.2.2"
   }
