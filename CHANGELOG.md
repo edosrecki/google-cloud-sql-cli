@@ -1,3 +1,5 @@
+## [1.9.1](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.9.0...v1.9.1) (2023-10-03)
+
 # [1.9.0](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.8.2...v1.9.0) (2023-08-15)
 
 
