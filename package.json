@@ -52,7 +52,7 @@
     "@types/inquirer": "8.2.6",
     "@types/inquirer-autocomplete-prompt": "2.0.0",
     "@types/lodash": "4.14.201",
-    "@types/memoizee": "0.4.10",
+    "@types/memoizee": "0.4.11",
     "@types/node": "16.18.60",
     "@types/shelljs": "0.8.14",
     "@types/update-notifier": "5.1.0",
