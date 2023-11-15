@@ -16,7 +16,7 @@
     "google-cloud-sql": "dist/index.js"
   },
   "engines": {
-    "node": ">= 14"
+    "node": ">= 16"
   },
   "scripts": {
     "clean": "rimraf dist bin",
@@ -48,12 +48,12 @@
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/exec": "6.0.3",
     "@semantic-release/git": "10.0.1",
-    "@tsconfig/node16": "16.1.1",
+    "@tsconfig/node18": "18.2.2",
     "@types/inquirer": "8.2.6",
     "@types/inquirer-autocomplete-prompt": "2.0.0",
     "@types/lodash": "4.14.201",
     "@types/memoizee": "0.4.11",
-    "@types/node": "16.18.60",
+    "@types/node": "18.18.9",
     "@types/shelljs": "0.8.14",
     "@types/update-notifier": "5.1.0",
     "@typescript-eslint/eslint-plugin": "6.9.1",

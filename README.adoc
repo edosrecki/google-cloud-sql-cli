@@ -78,7 +78,7 @@ npm run build
 
 == Package
 === Pre-configured
-Package the app for Node.JS 16 on MacOS, Linux, and Windows.
+Package the app for Node.JS 18 on MacOS, Linux, and Windows.
 
 [source,bash]
 ----
