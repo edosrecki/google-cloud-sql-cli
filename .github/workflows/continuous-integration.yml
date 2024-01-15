@@ -28,5 +28,5 @@ jobs:
         run: npm run build
 
       - name: Bundle
-        if: ${{ matrix.node-version == 18 }}
+        if: ${{ matrix.node-version == 20 }}
         run: npm run bundle
