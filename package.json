@@ -60,7 +60,7 @@
     "@typescript-eslint/parser": "6.19.1",
     "eslint": "8.56.0",
     "eslint-config-prettier": "9.1.0",
-    "husky": "9.0.6",
+    "husky": "9.0.10",
     "pkg": "5.8.1",
     "prettier-package-json": "2.8.0",
     "rimraf": "5.0.5",
