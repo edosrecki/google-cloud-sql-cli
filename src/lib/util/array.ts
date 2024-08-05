@@ -9,7 +9,11 @@ export const findByKey = <T, K extends keyof T>(
 
 export const appendOrReplaceByKey = <T>(items: T[], item: T, key: keyof T) => {
   const index = findIndexByKey(items, key, item[key])
-  index >= 0 ? (items[index] = item) : items.push(item)
+  if (index >= 0) {
+    items[index] = item
+  } else {
+    items.push(item)
+  }
 }
 
 export const deleteByKey = <T, K extends keyof T>(
