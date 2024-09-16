@@ -60,7 +60,7 @@
     "@types/shelljs": "0.8.15",
     "@types/update-notifier": "5.1.0",
     "eslint": "9.9.1",
-    "husky": "9.1.5",
+    "husky": "9.1.6",
     "pkg": "5.8.1",
     "prettier-package-json": "2.8.0",
     "rimraf": "6.0.1",
