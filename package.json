@@ -56,7 +56,7 @@
     "@types/inquirer-autocomplete-prompt": "2.0.0",
     "@types/lodash": "4.17.15",
     "@types/memoizee": "0.4.11",
-    "@types/node": "20.17.16",
+    "@types/node": "20.17.24",
     "@types/shelljs": "0.8.15",
     "@types/update-notifier": "5.1.0",
     "eslint": "9.20.1",
