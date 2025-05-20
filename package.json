@@ -42,7 +42,7 @@
     "inquirer-autocomplete-prompt": "2.0.0",
     "lodash": "4.17.21",
     "memoizee": "0.4.17",
-    "shelljs": "0.8.5",
+    "shelljs": "0.10.0",
     "update-notifier": "5.1.0"
   },
   "devDependencies": {
@@ -51,22 +51,22 @@
     "@semantic-release/exec": "7.1.0",
     "@semantic-release/git": "10.0.1",
     "@stylistic/eslint-plugin": "4.2.0",
-    "@tsconfig/node20": "20.1.4",
+    "@tsconfig/node20": "20.1.5",
     "@types/inquirer": "8.2.6",
     "@types/inquirer-autocomplete-prompt": "2.0.0",
-    "@types/lodash": "4.17.15",
-    "@types/memoizee": "0.4.11",
+    "@types/lodash": "4.17.16",
+    "@types/memoizee": "0.4.12",
     "@types/node": "20.17.48",
-    "@types/shelljs": "0.8.15",
+    "@types/shelljs": "0.8.16",
     "@types/update-notifier": "5.1.0",
     "eslint": "9.27.0",
     "husky": "9.1.7",
     "pkg": "5.8.1",
     "prettier-package-json": "2.8.0",
     "rimraf": "6.0.1",
-    "semantic-release": "24.2.3",
+    "semantic-release": "24.2.4",
     "ts-node": "10.9.2",
-    "typescript": "5.7.3",
+    "typescript": "5.8.3",
     "typescript-eslint": "8.32.1"
   }
 }
