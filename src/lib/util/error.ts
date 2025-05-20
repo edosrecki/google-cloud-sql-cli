@@ -6,11 +6,11 @@ export class CommandExecutionError extends Error {
   constructor(command: string, stderr: string, stdout?: string) {
     super('Error while executing command.')
 
-    this.data =
-      `${bold(red(this.message))}\n` +
-      `  ${bold('command')}: ${command.trim()}\n` +
-      `  ${bold('stderr')}: ${stderr.trim()}\n` +
-      (stdout ? `  ${bold('stdout')}: ${stdout.trim()}\n` : '')
+    this.data
+      = `${bold(red(this.message))}\n`
+        + `  ${bold('command')}: ${command.trim()}\n`
+        + `  ${bold('stderr')}: ${stderr.trim()}\n`
+        + (stdout ? `  ${bold('stdout')}: ${stdout.trim()}\n` : '')
   }
 }
 
@@ -18,7 +18,8 @@ export const tryCatch = <A, B, R>(fn: (a: A, b: B) => R) => {
   return (a: A, b: B) => {
     try {
       return fn(a, b)
-    } catch (error) {
+    }
+    catch (error) {
       logError(error)
 
       throw error
@@ -29,7 +30,8 @@ export const tryCatch = <A, B, R>(fn: (a: A, b: B) => R) => {
 export const logError = (error: unknown) => {
   if (error instanceof CommandExecutionError) {
     console.error(error.data)
-  } else {
+  }
+  else {
     console.error(error)
   }
 }

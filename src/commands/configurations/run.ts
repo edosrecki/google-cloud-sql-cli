@@ -9,15 +9,16 @@ import { confirmationPrompt } from './prompts/confirmation'
 export const runConfiguration = async () => {
   inquirer.registerPrompt('autocomplete', autocomplete)
 
-  const { configuration, confirmation } =
-    await inquirer.prompt<ConfigurationChooseAnswers>([
+  const { configuration, confirmation }
+    = await inquirer.prompt<ConfigurationChooseAnswers>([
       configurationPrompt,
       confirmationPrompt,
     ])
 
   if (confirmation) {
     execConfiguration(configuration)
-  } else {
+  }
+  else {
     console.log(red('You are excused.'))
   }
 }

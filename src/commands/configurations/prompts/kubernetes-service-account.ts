@@ -6,7 +6,7 @@ import { tryCatch } from '../../../lib/util/error'
 const source = tryCatch((answers: ConfigurationCreateAnswers, input?: string) => {
   const instances = fetchKubernetesServiceAccounts(
     answers.kubernetesContext,
-    answers.kubernetesNamespace
+    answers.kubernetesNamespace,
   )
   return search(instances, input)
 })

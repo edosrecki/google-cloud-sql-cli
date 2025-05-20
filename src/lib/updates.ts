@@ -16,10 +16,10 @@ export const notifyForUpdates = () => {
   })
 
   if (update && update.current !== update.latest) {
-    const text =
-      `${yellow(update.current)} ↦ ${green(update.latest)}\n\n` +
-      `${blue('brew')} upgrade ${name}\n` +
-      `${blue('npm')} i -g ${name}`
+    const text
+      = `${yellow(update.current)} ↦ ${green(update.latest)}\n\n`
+        + `${blue('brew')} upgrade ${name}\n`
+        + `${blue('npm')} i -g ${name}`
 
     const box = boxen(text, {
       title: 'Update Available',

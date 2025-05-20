@@ -30,7 +30,8 @@ export const createConfiguration = async () => {
     saveConfiguration(answers)
 
     console.log(green(`Saved configuration '${bold(answers.configurationName)}'.`))
-  } else {
+  }
+  else {
     console.log(red('You are excused.'))
   }
 }

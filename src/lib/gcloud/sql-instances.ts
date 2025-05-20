@@ -34,5 +34,5 @@ export const fetchGoogleCloudSqlInstances = memoize(
 
     // skip header line
     return instances.slice(1).map(parseInstance)
-  }
+  },
 )

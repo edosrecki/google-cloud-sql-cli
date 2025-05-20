@@ -9,8 +9,8 @@ import { confirmationPrompt } from './prompts/confirmation'
 export const removeConfiguration = async () => {
   inquirer.registerPrompt('autocomplete', autocomplete)
 
-  const { configuration, confirmation } =
-    await inquirer.prompt<ConfigurationChooseAnswers>([
+  const { configuration, confirmation }
+    = await inquirer.prompt<ConfigurationChooseAnswers>([
       configurationPrompt,
       confirmationPrompt,
     ])
@@ -19,9 +19,10 @@ export const removeConfiguration = async () => {
     deleteConfiguration(configuration.configurationName)
 
     console.log(
-      green(`Deleted configuration '${bold(configuration.configurationName)}'.`)
+      green(`Deleted configuration '${bold(configuration.configurationName)}'.`),
     )
-  } else {
+  }
+  else {
     console.log(red('You are excused.'))
   }
 }

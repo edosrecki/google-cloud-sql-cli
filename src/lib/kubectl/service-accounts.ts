@@ -9,5 +9,5 @@ export const fetchKubernetesServiceAccounts = memoize(
       --context="${context}" \
       --output='jsonpath={range .items[*]}{.metadata.name}{"\\n"}{end}'
   `)
-  }
+  },
 )

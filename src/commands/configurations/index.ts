@@ -17,7 +17,8 @@ export async function addConfigurationsCommands(program: Command) {
     .action(async () => {
       try {
         await createConfiguration()
-      } catch (error) {
+      }
+      catch (error) {
         logError(error)
       }
     })
@@ -28,7 +29,8 @@ export async function addConfigurationsCommands(program: Command) {
     .action(async () => {
       try {
         await showConfiguration()
-      } catch (error) {
+      }
+      catch (error) {
         logError(error)
       }
     })
@@ -40,7 +42,8 @@ export async function addConfigurationsCommands(program: Command) {
     .action(async () => {
       try {
         await removeConfiguration()
-      } catch (error) {
+      }
+      catch (error) {
         logError(error)
       }
     })
@@ -53,10 +56,12 @@ export async function addConfigurationsCommands(program: Command) {
       try {
         if (name) {
           runConfigurationByName(name)
-        } else {
+        }
+        else {
           await runConfiguration()
         }
-      } catch (error) {
+      }
+      catch (error) {
         logError(error)
       }
     })
