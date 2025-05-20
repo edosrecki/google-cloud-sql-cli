@@ -14,14 +14,14 @@ type CloudSqlProxyPod = {
 export const runCloudSqlProxyPod = (pod: CloudSqlProxyPod): string => {
   return execCommand(`
     kubectl run \
-      --image=gcr.io/cloudsql-docker/gce-proxy \
+      --image=gcr.io/cloud-sql-connectors/cloud-sql-proxy \
       --context="${pod.context}" \
       --namespace="${pod.namespace}" \
       --overrides='{"spec": {"serviceAccount": "${pod.serviceAccount}"}}' \
       --annotations="cluster-autoscaler.kubernetes.io/safe-to-evict=true" \
       --labels=app=google-cloud-sql \
       ${pod.name} \
-      -- /cloud_sql_proxy -enable_iam_login -ip_address_types=PRIVATE -instances=${pod.instance}=tcp:${pod.remotePort}
+      -- --auto-iam-authn --auto-ip '${pod.instance}?port=${pod.remotePort}'
   `)
 }
 
