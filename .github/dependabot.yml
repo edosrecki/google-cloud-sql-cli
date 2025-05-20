@@ -6,13 +6,9 @@ updates:
       interval: "weekly"
     assignees:
       - "edosrecki"
-    reviewers:
-      - "edosrecki"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
     assignees:
-      - "edosrecki"
-    reviewers:
       - "edosrecki"
