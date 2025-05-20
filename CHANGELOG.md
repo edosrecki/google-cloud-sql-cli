@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.9.4...v1.10.0) (2025-05-20)
+
+
+### Features
+
+* upgrade to cloud sql auth proxy v2 ([3cc42eb](https://github.com/edosrecki/google-cloud-sql-cli/commit/3cc42eb5b34d176794da3c31bd7114ba459ebf5b))
+
 ## [1.9.4](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.9.3...v1.9.4) (2024-11-18)
 
 ## [1.9.3](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.9.2...v1.9.3) (2024-01-15)
