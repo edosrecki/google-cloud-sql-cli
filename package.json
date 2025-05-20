@@ -55,7 +55,7 @@
     "@types/inquirer": "8.2.6",
     "@types/inquirer-autocomplete-prompt": "2.0.0",
     "@types/lodash": "4.17.15",
-    "@types/memoizee": "0.4.11",
+    "@types/memoizee": "0.4.12",
     "@types/node": "20.17.48",
     "@types/shelljs": "0.8.15",
     "@types/update-notifier": "5.1.0",
