@@ -46,19 +46,19 @@
     "update-notifier": "5.1.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.27.0",
+    "@eslint/js": "9.27.0",
     "@semantic-release/changelog": "6.0.3",
-    "@semantic-release/exec": "6.0.3",
+    "@semantic-release/exec": "7.1.0",
     "@semantic-release/git": "10.0.1",
     "@tsconfig/node20": "20.1.4",
     "@types/inquirer": "8.2.6",
     "@types/inquirer-autocomplete-prompt": "2.0.0",
     "@types/lodash": "4.17.15",
     "@types/memoizee": "0.4.11",
-    "@types/node": "20.17.16",
+    "@types/node": "20.17.48",
     "@types/shelljs": "0.8.15",
     "@types/update-notifier": "5.1.0",
-    "eslint": "^9.27.0",
+    "eslint": "9.27.0",
     "husky": "9.1.7",
     "pkg": "5.8.1",
     "prettier-package-json": "2.8.0",
@@ -66,6 +66,6 @@
     "semantic-release": "24.2.3",
     "ts-node": "10.9.2",
     "typescript": "5.7.3",
-    "typescript-eslint": "^8.32.1"
+    "typescript-eslint": "8.32.1"
   }
 }
