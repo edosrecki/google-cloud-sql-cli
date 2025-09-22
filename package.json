@@ -59,7 +59,7 @@
     "@types/node": "22.18.3",
     "@types/shelljs": "0.8.17",
     "@types/update-notifier": "5.1.0",
-    "eslint": "9.35.0",
+    "eslint": "9.36.0",
     "husky": "9.1.7",
     "pkg": "5.8.1",
     "prettier-package-json": "2.8.0",
