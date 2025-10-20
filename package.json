@@ -36,7 +36,7 @@
     "chalk": "4.1.2",
     "commander": "14.0.1",
     "conf": "10.2.0",
-    "exit-hook": "2.2.1",
+    "exit-hook": "5.0.0",
     "fuse.js": "7.1.0",
     "inquirer": "8.2.5",
     "inquirer-autocomplete-prompt": "2.0.0",
