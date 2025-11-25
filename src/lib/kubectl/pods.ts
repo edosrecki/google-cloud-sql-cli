@@ -1,7 +1,8 @@
 import { bold, cyan } from 'chalk'
 import { execCommand, execCommandAttached } from '../util/exec'
+import { DatabaseType } from '../types'
 
-type CloudSqlProxyPod = {
+type ProxyPod = {
   name: string
   context: string
   namespace: string
@@ -9,9 +10,10 @@ type CloudSqlProxyPod = {
   instance: string
   localPort: number
   remotePort: number
+  databaseType?: DatabaseType
 }
 
-export const runCloudSqlProxyPod = (pod: CloudSqlProxyPod): string => {
+export const runCloudSqlProxyPod = (pod: ProxyPod): string => {
   return execCommand(`
     kubectl run \
       --image=gcr.io/cloud-sql-connectors/cloud-sql-proxy \
@@ -25,7 +27,21 @@ export const runCloudSqlProxyPod = (pod: CloudSqlProxyPod): string => {
   `)
 }
 
-export const deletePod = (pod: CloudSqlProxyPod) => {
+export const runAlloyDbProxyPod = (pod: ProxyPod): string => {
+  return execCommand(`
+    kubectl run \
+      --image=gcr.io/alloydb-connectors/alloydb-auth-proxy \
+      --context="${pod.context}" \
+      --namespace="${pod.namespace}" \
+      --overrides='{"spec": {"serviceAccount": "${pod.serviceAccount}"}}' \
+      --annotations="cluster-autoscaler.kubernetes.io/safe-to-evict=true" \
+      --labels=app=google-cloud-alloydb \
+      ${pod.name} \
+      -- --address=0.0.0.0 --port=${pod.remotePort} --auto-iam-authn --structured-logs '${pod.instance}'
+  `)
+}
+
+export const deletePod = (pod: ProxyPod) => {
   console.log(`Deleting pod '${bold(cyan(pod.name))}'.`)
   execCommand(`
     kubectl delete pod ${pod.name} \
@@ -35,7 +51,7 @@ export const deletePod = (pod: CloudSqlProxyPod) => {
   console.log(`Pod '${bold(cyan(pod.name))}' deleted.`)
 }
 
-export const waitForPodReady = (pod: CloudSqlProxyPod) => {
+export const waitForPodReady = (pod: ProxyPod) => {
   console.log(`Waiting for pod '${bold(cyan(pod.name))}'.`)
   execCommand(`
     kubectl wait pod ${pod.name} \
@@ -47,7 +63,7 @@ export const waitForPodReady = (pod: CloudSqlProxyPod) => {
   console.log(`Pod '${bold(cyan(pod.name))}' is ready.`)
 }
 
-export const portForward = (pod: CloudSqlProxyPod) => {
+export const portForward = (pod: ProxyPod) => {
   console.log(`Starting port forwarding to pod '${bold(cyan(pod.name))}'.`)
   execCommandAttached(`
     kubectl port-forward ${pod.name} ${pod.localPort}:${pod.remotePort} \
