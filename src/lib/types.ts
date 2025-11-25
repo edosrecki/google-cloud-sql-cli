@@ -1,8 +1,16 @@
 import { GoogleCloudSqlInstance } from './gcloud/sql-instances'
+import { AlloyDbInstance } from './gcloud/alloydb-instances'
+
+export type DatabaseType = 'cloudsql' | 'alloydb'
+
+export type DatabaseInstance
+  = | Pick<GoogleCloudSqlInstance, 'connectionName' | 'port'>
+    | Pick<AlloyDbInstance, 'connectionName' | 'port'>
 
 export type Configuration = {
   configurationName: string
-  googleCloudSqlInstance: Pick<GoogleCloudSqlInstance, 'connectionName' | 'port'>
+  databaseType: DatabaseType
+  databaseInstance: DatabaseInstance
   kubernetesContext: string
   kubernetesNamespace: string
   kubernetesServiceAccount: string
