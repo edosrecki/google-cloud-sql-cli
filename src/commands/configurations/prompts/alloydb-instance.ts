@@ -1,32 +1,32 @@
 import { pick } from 'lodash'
 import {
-  fetchGoogleCloudSqlInstances,
-  GoogleCloudSqlInstance,
-} from '../../../lib/gcloud/sql-instances'
+  fetchAlloyDbInstances,
+  AlloyDbInstance,
+} from '../../../lib/gcloud/alloydb-instances'
 import { ConfigurationCreateAnswers } from '../../../lib/types'
 import { searchByKey } from '../../../lib/util/search'
 import { tryCatch } from '../../../lib/util/error'
 
-const formatInstance = (instance: GoogleCloudSqlInstance) => {
-  const { name, region } = instance
+const formatInstance = (instance: AlloyDbInstance) => {
+  const { name, region, cluster } = instance
   return {
-    name: `${name} (${region})`,
+    name: `${name} (cluster: ${cluster}, region: ${region})`,
     short: name,
     value: pick(instance, 'connectionName', 'port'),
   }
 }
 
 const source = tryCatch((answers: ConfigurationCreateAnswers, input?: string) => {
-  const instances = fetchGoogleCloudSqlInstances(answers.googleCloudProject)
+  const instances = fetchAlloyDbInstances(answers.googleCloudProject)
   const filtered = searchByKey(instances, 'connectionName', input)
 
   return filtered.map(formatInstance)
 })
 
-export const googleCloudSqlInstancePrompt = {
+export const alloyDbInstancePrompt = {
   type: 'autocomplete',
   name: 'databaseInstance',
-  message: 'Choose Google Cloud SQL instance:',
+  message: 'Choose AlloyDB instance:',
   source,
-  when: (answers: ConfigurationCreateAnswers) => answers.databaseType === 'cloudsql',
+  when: (answers: ConfigurationCreateAnswers) => answers.databaseType === 'alloydb',
 }

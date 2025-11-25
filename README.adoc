@@ -7,9 +7,9 @@
 image:https://img.shields.io/github/package-json/v/edosrecki/google-cloud-sql-cli/master?color=blue&label=google-cloud-sql["google-cloud-sql CLI Version"]
 image:https://img.shields.io/github/actions/workflow/status/edosrecki/google-cloud-sql-cli/continuous-integration.yml["Build Status", link="https://github.com/edosrecki/google-cloud-sql-cli/actions"]
 
-A CLI app which establishes a connection to a private Google Cloud SQL instance and port-forwards it to a local machine.
+A CLI app which establishes a connection to a private Google Cloud SQL instance or AlloyDB instance and port-forwards it to a local machine.
 
-Connection is established by running a Google Cloud SQL Auth Proxy pod in a Google Kubernetes Engine cluster which runs in the same VPC network as the private Cloud SQL instance. Connection is then port-forwarded to the local machine, where a user can connect to the instance on localhost. **Corresponding workload identity has to be configured in the cluster, with service account which has Cloud SQL Client role on the given SQL instance.** Configurations in the app can be saved for practical future usage.
+Connection is established by running a Google Cloud SQL Auth Proxy pod (for Cloud SQL) or AlloyDB Auth Proxy pod (for AlloyDB) in a Google Kubernetes Engine cluster which runs in the same VPC network as the private database instance. Connection is then port-forwarded to the local machine, where a user can connect to the instance on localhost. **Corresponding workload identity has to be configured in the cluster, with service account which has Cloud SQL Client role (for Cloud SQL instances) or AlloyDB Client role (for AlloyDB instances) on the given database instance.** Configurations in the app can be saved for practical future usage.
 
 The app relies on local `gcloud` and `kubectl` commands which have to be configured and authenticated with the proper Google Cloud user and GKE Kubernetes cluster.
 
@@ -43,8 +43,12 @@ _Package_ sections.
 * Install https://kubernetes.io/docs/tasks/tools/#kubectl[`kubectl`] tool
 * Authenticate to Google Cloud: `gcloud auth login`
 * Get GKE cluster credentials: `gcloud container clusters get-credentials`
-* https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity[Configure workload identity] in GKE namespace(s) and assign _Cloud SQL Client_ role in IAM for Cloud SQL instances that you want to use
-* Enable Cloud SQL Admin API for project(s) that host Cloud SQL instances that you want to use: `gcloud services enable sqladmin.googleapis.com --project=$PROJECT`
+* https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity[Configure workload identity] in GKE namespace(s) and assign appropriate IAM roles:
+** _Cloud SQL Client_ role for Cloud SQL instances
+** _AlloyDB Client_ role for AlloyDB instances
+* Enable required APIs for project(s):
+** Cloud SQL Admin API for Cloud SQL instances: `gcloud services enable sqladmin.googleapis.com --project=$PROJECT`
+** AlloyDB API for AlloyDB instances: `gcloud services enable alloydb.googleapis.com --project=$PROJECT`
 
 === Run
 [source,bash]

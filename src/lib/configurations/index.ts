@@ -4,6 +4,7 @@ import {
   deletePod,
   portForward,
   runCloudSqlProxyPod,
+  runAlloyDbProxyPod,
   waitForPodReady,
 } from '../kubectl/pods'
 import { Configuration, ConfigurationCreateAnswers } from '../types'
@@ -40,20 +41,27 @@ export const deleteConfiguration = (configuratioName: string): void => {
 
 export const execConfiguration = (configuration: Configuration) => {
   const pod = {
-    name: `sql-proxy-${kebabCase(configuration.configurationName)}-${randomString()}`,
+    name: `${configuration.databaseType === 'alloydb' ? 'alloydb' : 'sql'}-proxy-${kebabCase(configuration.configurationName)}-${randomString()}`,
     context: configuration.kubernetesContext,
     namespace: configuration.kubernetesNamespace,
     serviceAccount: configuration.kubernetesServiceAccount,
-    instance: configuration.googleCloudSqlInstance.connectionName,
+    instance: configuration.databaseInstance.connectionName,
     localPort: configuration.localPort,
-    remotePort: configuration.googleCloudSqlInstance.port,
+    remotePort: configuration.databaseInstance.port,
+    databaseType: configuration.databaseType,
   }
 
   exitHook(() => {
     deletePod(pod)
   })
 
-  runCloudSqlProxyPod(pod)
+  if (configuration.databaseType === 'alloydb') {
+    runAlloyDbProxyPod(pod)
+  }
+  else {
+    runCloudSqlProxyPod(pod)
+  }
+
   waitForPodReady(pod)
   portForward(pod)
 }
