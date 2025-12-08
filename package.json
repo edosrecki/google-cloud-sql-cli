@@ -54,7 +54,7 @@
     "@tsconfig/node22": "22.0.2",
     "@types/inquirer": "8.2.6",
     "@types/inquirer-autocomplete-prompt": "2.0.0",
-    "@types/lodash": "4.17.20",
+    "@types/lodash": "4.17.21",
     "@types/memoizee": "0.4.12",
     "@types/node": "22.19.0",
     "@types/shelljs": "0.8.17",
