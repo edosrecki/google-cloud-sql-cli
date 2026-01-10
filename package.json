@@ -57,7 +57,7 @@
     "@types/lodash": "4.17.21",
     "@types/memoizee": "0.4.12",
     "@types/node": "24.10.6",
-    "@types/shelljs": "0.8.17",
+    "@types/shelljs": "0.10.0",
     "@types/update-notifier": "5.1.0",
     "@yao-pkg/pkg": "6.11.0",
     "eslint": "9.39.2",
