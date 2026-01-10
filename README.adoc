@@ -82,17 +82,16 @@ Migration from v1 to v2 is done automatically when the app is run for the first 
 == Build
 [source,bash]
 ----
-npm run clean
-npm run build
+pnpm build
 ----
 
 == Package
 === Pre-configured
-Package the app for Node.JS 18 on MacOS, Linux, and Windows.
+Package the app for Node.JS 24 on MacOS, Linux, and Windows.
 
 [source,bash]
 ----
-npm run bundle
+pnpm bundle
 ----
 
 === Manual
@@ -100,7 +99,7 @@ See https://www.npmjs.com/package/pkg#targets[pkg] for details.
 
 [source,bash]
 ----
-npx pkg <NODE_RANGE>-<PLATFORM>-<ARCH>
+pnpm exec pkg <NODE_RANGE>-<PLATFORM>-<ARCH>
 ----
 
 == Deploy

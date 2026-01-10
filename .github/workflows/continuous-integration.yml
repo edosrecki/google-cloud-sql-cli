@@ -10,23 +10,30 @@ jobs:
       matrix:
         node-version: [24, 25]
     steps:
-      - name: Checkout code
+      - name: 📂 Checkout code
         uses: actions/checkout@v6
 
-      - name: Setup Node.js
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: 💚 Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
 
-      - name: Install packages
-        run: npm install
+      - name: 📦 Install dependencies
+        run: pnpm install
 
-      - name: Lint
-        run: npm run lint
+      - name: 🔎 Typecheck code
+        run: pnpm typecheck
 
-      - name: Build
-        run: npm run build
+      - name: 🔎 Lint code
+        run: pnpm lint
 
-      - name: Bundle
+      - name: 🚀 Build code
+        run: pnpm build
+
+      - name: 📦 Bundle app
         if: ${{ matrix.node-version == 24 }}
-        run: npm run bundle
+        run: pnpm bundle

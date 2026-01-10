@@ -1,5 +1,5 @@
 import Conf from 'conf'
-import { Configuration } from '../../types'
+import { Configuration } from '../../types.js'
 
 interface V1Configuration {
   configurationName: string

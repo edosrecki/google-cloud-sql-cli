@@ -1,5 +1,5 @@
 import memoize from 'memoizee'
-import { execCommandMultiline } from '../util/exec'
+import { execCommandMultiline } from '../util/exec.js'
 
 export type GoogleCloudSqlInstance = {
   name: string

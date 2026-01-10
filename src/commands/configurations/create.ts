@@ -1,18 +1,18 @@
-import { bold, green, red } from 'chalk'
+import chalk from 'chalk'
 import inquirer from 'inquirer'
 import autocomplete from 'inquirer-autocomplete-prompt'
-import { saveConfiguration } from '../../lib/configurations'
-import { ConfigurationCreateAnswers } from '../../lib/types'
-import { googleAlloyDbInstancePrompt } from './prompts/google-alloydb-instance'
-import { configurationNamePrompt } from './prompts/configuration-name'
-import { confirmationPrompt } from './prompts/confirmation'
-import { databaseTypePrompt } from './prompts/database-type'
-import { googleCloudProjectPrompt } from './prompts/google-cloud-project'
-import { googleCloudSqlInstancePrompt } from './prompts/google-cloud-sql-instance'
-import { kubernetesContextPrompt } from './prompts/kubernetes-context'
-import { kubernetesNamespacePrompt } from './prompts/kubernetes-namespace'
-import { kubernetesServiceAccountPrompt } from './prompts/kubernetes-service-account'
-import { localPortPrompt } from './prompts/local-port'
+import { saveConfiguration } from '../../lib/configurations/index.js'
+import { ConfigurationCreateAnswers } from '../../lib/types.js'
+import { googleAlloyDbInstancePrompt } from './prompts/google-alloydb-instance.js'
+import { configurationNamePrompt } from './prompts/configuration-name.js'
+import { confirmationPrompt } from './prompts/confirmation.js'
+import { databaseTypePrompt } from './prompts/database-type.js'
+import { googleCloudProjectPrompt } from './prompts/google-cloud-project.js'
+import { googleCloudSqlInstancePrompt } from './prompts/google-cloud-sql-instance.js'
+import { kubernetesContextPrompt } from './prompts/kubernetes-context.js'
+import { kubernetesNamespacePrompt } from './prompts/kubernetes-namespace.js'
+import { kubernetesServiceAccountPrompt } from './prompts/kubernetes-service-account.js'
+import { localPortPrompt } from './prompts/local-port.js'
 
 export const createConfiguration = async () => {
   inquirer.registerPrompt('autocomplete', autocomplete)
@@ -33,9 +33,9 @@ export const createConfiguration = async () => {
   if (answers.confirmation) {
     saveConfiguration(answers)
 
-    console.log(green(`Saved configuration '${bold(answers.configurationName)}'.`))
+    console.log(chalk.green(`Saved configuration '${chalk.bold(answers.configurationName)}'.`))
   }
   else {
-    console.log(red('You are excused.'))
+    console.log(chalk.red('You are excused.'))
   }
 }
