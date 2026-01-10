@@ -3,7 +3,7 @@ import inquirer from 'inquirer'
 import autocomplete from 'inquirer-autocomplete-prompt'
 import { saveConfiguration } from '../../lib/configurations'
 import { ConfigurationCreateAnswers } from '../../lib/types'
-import { alloyDbInstancePrompt } from './prompts/alloydb-instance'
+import { googleAlloyDbInstancePrompt } from './prompts/google-alloydb-instance'
 import { configurationNamePrompt } from './prompts/configuration-name'
 import { confirmationPrompt } from './prompts/confirmation'
 import { databaseTypePrompt } from './prompts/database-type'
@@ -21,7 +21,7 @@ export const createConfiguration = async () => {
     googleCloudProjectPrompt,
     databaseTypePrompt,
     googleCloudSqlInstancePrompt,
-    alloyDbInstancePrompt,
+    googleAlloyDbInstancePrompt,
     kubernetesContextPrompt,
     kubernetesNamespacePrompt,
     kubernetesServiceAccountPrompt,

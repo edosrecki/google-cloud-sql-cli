@@ -1,11 +1,9 @@
-import { GoogleCloudSqlInstance } from './gcloud/sql-instances'
-import { AlloyDbInstance } from './gcloud/alloydb-instances'
-
 export type DatabaseType = 'cloudsql' | 'alloydb'
 
-export type DatabaseInstance
-  = | Pick<GoogleCloudSqlInstance, 'connectionName' | 'port'>
-    | Pick<AlloyDbInstance, 'connectionName' | 'port'>
+export type DatabaseInstance = {
+  connectionName: string
+  port: number
+}
 
 export type Configuration = {
   configurationName: string

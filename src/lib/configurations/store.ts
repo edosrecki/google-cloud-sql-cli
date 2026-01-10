@@ -1,19 +1,24 @@
 import Conf from 'conf'
 import { Configuration } from '../types'
-
-export const CURRENT_VERSION = 2
+import { migrateV1ToV2, V1Store } from './migrations/migrate-v1-v2'
+import { currentVersion } from './constants'
 
 type Schema = {
-  version?: number
+  version: number
   configurations: Configuration[]
 }
 
 export const store = new Conf<Schema>({
   configName: 'configurations',
   projectSuffix: '',
+  projectVersion: currentVersion,
+  migrations: {
+    '2.0.0': store => migrateV1ToV2(store as unknown as V1Store),
+  },
   schema: {
     version: {
-      type: 'number',
+      type: 'string',
+      default: currentVersion,
     },
     configurations: {
       type: 'array',
@@ -22,7 +27,7 @@ export const store = new Conf<Schema>({
         type: 'object',
         properties: {
           configurationName: { type: 'string' },
-          databaseType: { type: 'string' },
+          databaseType: { type: 'string', enum: ['cloudsql', 'alloydb'] },
           databaseInstance: {
             type: 'object',
             properties: {

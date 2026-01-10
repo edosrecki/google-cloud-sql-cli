@@ -10,7 +10,7 @@ type ProxyPod = {
   instance: string
   localPort: number
   remotePort: number
-  databaseType?: DatabaseType
+  databaseType: DatabaseType
 }
 
 export const runCloudSqlProxyPod = (pod: ProxyPod): string => {
@@ -39,6 +39,15 @@ export const runAlloyDbProxyPod = (pod: ProxyPod): string => {
       ${pod.name} \
       -- --address=0.0.0.0 --port=${pod.remotePort} --auto-iam-authn --structured-logs '${pod.instance}'
   `)
+}
+
+export const runProxyPod = (pod: ProxyPod) => {
+  if (pod.databaseType === 'alloydb') {
+    runAlloyDbProxyPod(pod)
+  }
+  else {
+    runCloudSqlProxyPod(pod)
+  }
 }
 
 export const deletePod = (pod: ProxyPod) => {
