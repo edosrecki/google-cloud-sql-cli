@@ -73,6 +73,12 @@ psql -h localhost -p $LOCAL_PORT -U $USER
 cat $(google-cloud-sql configurations path)
 ----
 
+== Migrations
+
+=== v1 to v2
+
+Migration from v1 to v2 is done automatically when the app is run for the first time after upgrade to version 2.0.0.
+
 == Build
 [source,bash]
 ----
