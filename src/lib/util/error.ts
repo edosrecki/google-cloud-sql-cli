@@ -1,4 +1,4 @@
-import { bold, red } from 'chalk'
+import chalk from 'chalk'
 
 export class CommandExecutionError extends Error {
   data: string
@@ -7,10 +7,10 @@ export class CommandExecutionError extends Error {
     super('Error while executing command.')
 
     this.data
-      = `${bold(red(this.message))}\n`
-        + `  ${bold('command')}: ${command.trim()}\n`
-        + `  ${bold('stderr')}: ${stderr.trim()}\n`
-        + (stdout ? `  ${bold('stdout')}: ${stdout.trim()}\n` : '')
+      = `${chalk.bold(chalk.red(this.message))}\n`
+        + `  ${chalk.bold('command')}: ${command.trim()}\n`
+        + `  ${chalk.bold('stderr')}: ${stderr.trim()}\n`
+        + (stdout ? `  ${chalk.bold('stdout')}: ${stdout.trim()}\n` : '')
   }
 }
 

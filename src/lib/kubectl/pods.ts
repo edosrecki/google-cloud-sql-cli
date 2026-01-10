@@ -1,6 +1,6 @@
-import { bold, cyan } from 'chalk'
-import { execCommand, execCommandAttached } from '../util/exec'
-import { DatabaseType } from '../types'
+import chalk from 'chalk'
+import { execCommand, execCommandAttached } from '../util/exec.js'
+import { DatabaseType } from '../types.js'
 
 type ProxyPod = {
   name: string
@@ -51,17 +51,17 @@ export const runProxyPod = (pod: ProxyPod) => {
 }
 
 export const deletePod = (pod: ProxyPod) => {
-  console.log(`Deleting pod '${bold(cyan(pod.name))}'.`)
+  console.log(`Deleting pod '${chalk.bold(chalk.cyan(pod.name))}'.`)
   execCommand(`
     kubectl delete pod ${pod.name} \
       --context="${pod.context}" \
       --namespace="${pod.namespace}"
   `)
-  console.log(`Pod '${bold(cyan(pod.name))}' deleted.`)
+  console.log(`Pod '${chalk.bold(chalk.cyan(pod.name))}' deleted.`)
 }
 
 export const waitForPodReady = (pod: ProxyPod) => {
-  console.log(`Waiting for pod '${bold(cyan(pod.name))}'.`)
+  console.log(`Waiting for pod '${chalk.bold(chalk.cyan(pod.name))}'.`)
   execCommand(`
     kubectl wait pod ${pod.name} \
       --for=condition=ready \
@@ -69,11 +69,11 @@ export const waitForPodReady = (pod: ProxyPod) => {
       --context="${pod.context}" \
       --namespace="${pod.namespace}"
   `)
-  console.log(`Pod '${bold(cyan(pod.name))}' is ready.`)
+  console.log(`Pod '${chalk.bold(chalk.cyan(pod.name))}' is ready.`)
 }
 
 export const portForward = (pod: ProxyPod) => {
-  console.log(`Starting port forwarding to pod '${bold(cyan(pod.name))}'.`)
+  console.log(`Starting port forwarding to pod '${chalk.bold(chalk.cyan(pod.name))}'.`)
   execCommandAttached(`
     kubectl port-forward ${pod.name} ${pod.localPort}:${pod.remotePort} \
       --context="${pod.context}" \

@@ -12,7 +12,7 @@
     [
       "@semantic-release/exec",
       {
-        "publishCmd": "./tools/package-google-cloud-sql.sh ${nextRelease.version}"
+        "prepareCmd": "./tools/package-google-cloud-sql.sh ${nextRelease.version}"
       }
     ],
     "@semantic-release/npm",

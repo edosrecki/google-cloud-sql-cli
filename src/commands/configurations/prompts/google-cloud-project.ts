@@ -1,7 +1,7 @@
-import { fetchGoogleCloudProjects } from '../../../lib/gcloud/projects'
-import { ConfigurationCreateAnswers } from '../../../lib/types'
-import { tryCatch } from '../../../lib/util/error'
-import { search } from '../../../lib/util/search'
+import { fetchGoogleCloudProjects } from '../../../lib/gcloud/projects.js'
+import { ConfigurationCreateAnswers } from '../../../lib/types.js'
+import { tryCatch } from '../../../lib/util/error.js'
+import { search } from '../../../lib/util/search.js'
 
 const source = tryCatch((answers: ConfigurationCreateAnswers, input?: string) => {
   const projects = fetchGoogleCloudProjects()

@@ -1,7 +1,7 @@
 import Conf from 'conf'
-import { Configuration } from '../types'
-import { migrateV1ToV2, V1Store } from './migrations/migrate-v1-v2'
-import { currentVersion } from './constants'
+import { Configuration } from '../types.js'
+import { migrateV1ToV2, V1Store } from './migrations/migrate-v1-v2.js'
+import { currentVersion } from './constants.js'
 
 type Schema = {
   version: number
@@ -10,6 +10,7 @@ type Schema = {
 
 export const store = new Conf<Schema>({
   configName: 'configurations',
+  projectName: 'google-cloud-sql',
   projectSuffix: '',
   projectVersion: currentVersion,
   migrations: {

@@ -1,10 +1,10 @@
-import { red } from 'chalk'
+import chalk from 'chalk'
 import inquirer from 'inquirer'
 import autocomplete from 'inquirer-autocomplete-prompt'
-import { execConfiguration, getConfiguration } from '../../lib/configurations'
-import { ConfigurationChooseAnswers } from '../../lib/types'
-import { configurationPrompt } from './prompts/configuration'
-import { confirmationPrompt } from './prompts/confirmation'
+import { execConfiguration, getConfiguration } from '../../lib/configurations/index.js'
+import { ConfigurationChooseAnswers } from '../../lib/types.js'
+import { configurationPrompt } from './prompts/configuration.js'
+import { confirmationPrompt } from './prompts/confirmation.js'
 
 export const runConfiguration = async () => {
   inquirer.registerPrompt('autocomplete', autocomplete)
@@ -19,7 +19,7 @@ export const runConfiguration = async () => {
     execConfiguration(configuration)
   }
   else {
-    console.log(red('You are excused.'))
+    console.log(chalk.red('You are excused.'))
   }
 }
 

@@ -13,22 +13,29 @@ jobs:
     name: Build and deploy app
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: 📂 Checkout code
         uses: actions/checkout@v6
 
-      - name: Setup Node.js
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: 💚 Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version-file: package.json
+          cache: 'pnpm'
 
-      - name: Install packages
-        run: npm install
+      - name: 📦 Install dependencies
+        run: pnpm install
 
-      - name: Lint
-        run: npm run lint
+      - name: 🔎 Typecheck code
+        run: pnpm typecheck
 
-      - name: Build & Deploy
-        run: npx semantic-release
+      - name: 🔎 Lint code
+        run: pnpm lint
+
+      - name: 🚀 Build code and deploy app
+        run: pnpm exec semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HOMEBREW_TOOLS_TOKEN: ${{ secrets.HOMEBREW_TOOLS_TOKEN }}

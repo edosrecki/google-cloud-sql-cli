@@ -1,16 +1,16 @@
 import exitHook from 'exit-hook'
-import { omit, kebabCase } from 'lodash'
+import { omit, kebabCase } from 'lodash-es'
 import {
   deletePod,
   portForward,
   runProxyPod,
   waitForPodReady,
-} from '../kubectl/pods'
-import { Configuration, ConfigurationCreateAnswers } from '../types'
-import { appendOrReplaceByKey, deleteByKey, findByKey } from '../util/array'
-import { randomString } from '../util/string'
-import { store } from './store'
-import { configurationsKey } from './constants'
+} from '../kubectl/pods.js'
+import { Configuration, ConfigurationCreateAnswers } from '../types.js'
+import { appendOrReplaceByKey, deleteByKey, findByKey } from '../util/array.js'
+import { randomString } from '../util/string.js'
+import { store } from './store.js'
+import { configurationsKey } from './constants.js'
 
 const searchKey = 'configurationName' as const
 const excludeProperties = ['googleCloudProject', 'confirmation'] as const

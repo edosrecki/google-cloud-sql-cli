@@ -1,11 +1,11 @@
-import { pick } from 'lodash'
+import { pick } from 'lodash-es'
 import {
   fetchGoogleAlloyDbInstances,
   GoogleAlloyDbInstance,
-} from '../../../lib/gcloud/alloydb-instances'
-import { ConfigurationCreateAnswers } from '../../../lib/types'
-import { searchByKey } from '../../../lib/util/search'
-import { tryCatch } from '../../../lib/util/error'
+} from '../../../lib/gcloud/alloydb-instances.js'
+import { ConfigurationCreateAnswers } from '../../../lib/types.js'
+import { searchByKey } from '../../../lib/util/search.js'
+import { tryCatch } from '../../../lib/util/error.js'
 
 const formatInstance = (instance: GoogleAlloyDbInstance) => {
   const { name, region, cluster } = instance

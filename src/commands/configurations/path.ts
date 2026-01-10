@@ -1,6 +1,6 @@
-import { bold } from 'chalk'
-import { configurationPath } from '../../lib/configurations'
+import chalk from 'chalk'
+import { configurationPath } from '../../lib/configurations/index.js'
 
 export const showConfigurationPath = () => {
-  console.log(bold(configurationPath))
+  console.log(chalk.bold(configurationPath))
 }

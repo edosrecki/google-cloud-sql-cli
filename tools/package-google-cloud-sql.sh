@@ -2,8 +2,9 @@
 
 version="$1"
 
-npx -y replace-in-file '0.0.0-dev' "$version" ./src/lib/version.ts
-npm run bundle
+pnpm dlx replace-in-file '0.0.0-dev' "$version" ./src/lib/version.ts
+pnpm build
+pnpm bundle
 
 cd bin
 tar --transform s/-linux// -czf "google-cloud-sql-linux.tar.gz" google-cloud-sql-linux
