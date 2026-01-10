@@ -1,3 +1,17 @@
+# [2.0.0](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.10.0...v2.0.0) (2026-01-10)
+
+
+* feat!(alloyDB): add alloyDB ([3653ce2](https://github.com/edosrecki/google-cloud-sql-cli/commit/3653ce2311d3ae24b1dfea8ada5aab88b3a3af5a))
+
+
+### BREAKING CHANGES
+
+* Configuration file format changes in order to support
+both Cloud SQL and AlloyDB instances. Migration from v1 to v2 should
+be automatic on the first run of the v2 of the CLI.
+
+Relates SUITEDEV-39317
+
 # [1.10.0](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.9.4...v1.10.0) (2025-05-20)
 
 
