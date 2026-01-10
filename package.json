@@ -1,7 +1,7 @@
 {
   "name": "google-cloud-sql",
   "version": "2.0.0",
-  "description": "Connect to private Google Cloud SQL instance through Cloud SQL Auth Proxy running in GKE cluster.",
+  "description": "Connect to private Google Cloud SQL/AlloyDB instance through Cloud SQL/AlloyDB Auth Proxy running in GKE cluster.",
   "license": "UNLICENSED",
   "author": "Dinko Osrecki <dinko.osrecki@emarsys.com>",
   "homepage": "https://github.com/edosrecki/google-cloud-sql-cli",
