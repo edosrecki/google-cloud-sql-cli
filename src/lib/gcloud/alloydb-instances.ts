@@ -1,8 +1,7 @@
 import memoize from 'memoizee'
 import { execCommandMultiline } from '../util/exec'
-import { parseJson } from '../util/parsers'
 
-export type AlloyDbInstance = {
+export type GoogleAlloyDbInstance = {
   name: string
   region: string
   cluster: string
@@ -10,55 +9,35 @@ export type AlloyDbInstance = {
   port: number
 }
 
-type AlloyDbInstanceData = {
-  name: string
-  databaseVersion?: string
-}
-
-const parseInstance = (instanceData: AlloyDbInstanceData): AlloyDbInstance => {
-  // AlloyDB instance name format: projects/{project}/locations/{region}/clusters/{cluster}/instances/{instance}
-  const nameParts = instanceData.name.split('/')
+const parseInstance = (connectionName: string): GoogleAlloyDbInstance => {
+  // projects/{project}/locations/{region}/clusters/{cluster}/instances/{instance}
+  const nameParts = connectionName.split('/')
   const region = nameParts[3]
   const cluster = nameParts[5]
   const instance = nameParts[7]
-
-  // Connection name format: Full resource path (same as name)
-  const connectionName = instanceData.name
-  const port = 5432
 
   return {
     name: instance,
     region,
     cluster,
     connectionName,
-    port,
+    port: 5432,
   }
 }
 
-export const fetchAlloyDbInstances = memoize(
-  (project: string): AlloyDbInstance[] => {
+export const fetchGoogleAlloyDbInstances = memoize(
+  (project: string): GoogleAlloyDbInstance[] => {
     try {
-      const output = execCommandMultiline(`
+      const instances = execCommandMultiline(`
         gcloud alloydb instances list \
           --project=${project} \
-          --format=json \
+          --format='csv(name)' \
           --quiet
       `)
 
-      if (output.length === 0 || output[0].trim() === '') {
-        return []
-      }
-
-      const instances = parseJson(output.join('\n'))
-
-      if (!Array.isArray(instances)) {
-        return []
-      }
-
-      return instances.map(parseInstance)
+      return instances.slice(1).map(parseInstance)
     }
     catch {
-      // If AlloyDB API is not enabled or there are no instances, return empty array
       return []
     }
   },
