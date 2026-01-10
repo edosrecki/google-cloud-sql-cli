@@ -2,6 +2,10 @@ name: Continuous Deployment
 
 on: workflow_dispatch
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build:
     name: Build and deploy app
@@ -25,6 +29,5 @@ jobs:
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           HOMEBREW_TOOLS_TOKEN: ${{ secrets.HOMEBREW_TOOLS_TOKEN }}
           GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
