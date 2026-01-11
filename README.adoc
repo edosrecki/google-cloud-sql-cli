@@ -95,11 +95,15 @@ pnpm bundle
 ----
 
 === Manual
-See https://www.npmjs.com/package/pkg#targets[pkg] for details.
+See https://github.com/yao-pkg/pkg?tab=readme-ov-file#targets[pkg] for details.
 
 [source,bash]
 ----
-pnpm exec pkg <NODE_RANGE>-<PLATFORM>-<ARCH>
+pnpm build
+pnpm exec pkg dist/index.cjs -t '<NODE_RANGE>-<PLATFORM>-<ARCH>'
+
+# Example
+pnpm exec pkg dist/index.cjs -t 'node24-macos-arm64' -o 'google-cloud-sql'
 ----
 
 == Deploy
