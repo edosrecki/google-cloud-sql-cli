@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/edosrecki/google-cloud-sql-cli/compare/v2.0.0...v3.0.0) (2026-01-11)
+
+
+* chore!: move to ESM, pnpm ([0c96f8f](https://github.com/edosrecki/google-cloud-sql-cli/commit/0c96f8f988bbd438815df76ee744b9b1e8c518c1))
+
+
+### BREAKING CHANGES
+
+* Not a breaking change, source in ESM, but
+still compiles to CJS. However, releasing as major version
+due to potential for failures because of a new build process.
+
 # [2.0.0](https://github.com/edosrecki/google-cloud-sql-cli/compare/v1.10.0...v2.0.0) (2026-01-10)
 
 
