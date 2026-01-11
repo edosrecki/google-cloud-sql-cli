@@ -10,12 +10,15 @@ cd homebrew-tools
 git config user.email "${GIT_EMAIL}"
 git config user.name "Dinko Osrecki"
 
-cat <<EOF > google-cloud-sql.rb
-class GoogleCloudSql < Formula
-  desc "Connect to private Google Cloud SQL instance through Cloud SQL Auth Proxy running in GKE cluster."
+generate_formula() {
+  local class_name="$1"
+  cat <<EOF
+class ${class_name} < Formula
+  desc "Connect to private Google Cloud SQL/AlloyDB instance through Cloud SQL/AlloyDB Auth Proxy running in GKE cluster."
   homepage "https://github.com/edosrecki/google-cloud-sql-cli"
   url "$url"
   sha256 "$checksum"
+  version "$version"
   def install
     bin.install "google-cloud-sql"
   end
@@ -24,8 +27,15 @@ class GoogleCloudSql < Formula
   end
 end
 EOF
+}
 
-git add google-cloud-sql.rb
+# Create latest version formula
+generate_formula "GoogleCloudSql" > google-cloud-sql.rb
+# Create versioned formula
+versioned_formula="google-cloud-sql@${version}.rb"
+generate_formula "GoogleCloudSqlAT${version//./}" > "$versioned_formula"
+
+git add google-cloud-sql.rb "$versioned_formula"
 git commit -m "chore: release google-cloud-sql v$version"
 git push
 
