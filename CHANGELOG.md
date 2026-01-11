@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/edosrecki/google-cloud-sql-cli/compare/v3.0.0...v3.0.1) (2026-01-11)
+
+
+### Bug Fixes
+
+* pkg output file name ([8233da3](https://github.com/edosrecki/google-cloud-sql-cli/commit/8233da358320e4fd11873fc208250e76503928c6))
+
 # [3.0.0](https://github.com/edosrecki/google-cloud-sql-cli/compare/v2.0.0...v3.0.0) (2026-01-11)
 
 
