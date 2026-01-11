@@ -100,7 +100,7 @@ See https://github.com/yao-pkg/pkg?tab=readme-ov-file#targets[pkg] for details.
 [source,bash]
 ----
 pnpm build
-pnpm exec pkg dist/index.cjs -t '<NODE_RANGE>-<PLATFORM>-<ARCH>'
+pnpm exec pkg dist/index.cjs -t '<NODE_RANGE>-<PLATFORM>-<ARCH>' -o 'google-cloud-sql'
 
 # Example
 pnpm exec pkg dist/index.cjs -t 'node24-macos-arm64' -o 'google-cloud-sql'
