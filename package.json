@@ -28,7 +28,7 @@
     "clean": "rimraf dist bin",
     "prebuild": "pnpm clean",
     "build": "tsdown",
-    "bundle": "pkg dist/index.cjs --targets node24-linux,node24-macos,node24-win --out-dir bin",
+    "bundle": "pkg dist/index.cjs --targets node24-linux,node24-macos,node24-win -o bin/google-cloud-sql",
     "exec:dev": "tsx src/index.ts",
     "exec:dist": "node dist/index.cjs",
     "lint": "eslint .",
