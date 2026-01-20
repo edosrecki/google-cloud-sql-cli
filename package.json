@@ -58,7 +58,7 @@
     "@semantic-release/exec": "7.1.0",
     "@semantic-release/git": "10.0.1",
     "@stylistic/eslint-plugin": "5.7.0",
-    "@tsconfig/node24": "24.0.3",
+    "@tsconfig/node24": "24.0.4",
     "@types/inquirer": "^9.0.9",
     "@types/inquirer-autocomplete-prompt": "3.0.3",
     "@types/lodash-es": "4.17.12",
