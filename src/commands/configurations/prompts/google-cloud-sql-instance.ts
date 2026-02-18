@@ -1,32 +1,24 @@
+import { search } from '@inquirer/prompts'
 import { pick } from 'lodash-es'
 import {
   fetchGoogleCloudSqlInstances,
   GoogleCloudSqlInstance,
 } from '../../../lib/gcloud/sql-instances.js'
-import { ConfigurationCreateAnswers } from '../../../lib/types.js'
+import { DatabaseInstance } from '../../../lib/types.js'
 import { searchByKey } from '../../../lib/util/search.js'
-import { tryCatch } from '../../../lib/util/error.js'
 
-const formatInstance = (instance: GoogleCloudSqlInstance) => {
-  const { name, region } = instance
-  return {
-    name: `${name} (${region})`,
-    short: name,
-    value: pick(instance, 'connectionName', 'port'),
-  }
-}
-
-const source = tryCatch((answers: ConfigurationCreateAnswers, input?: string) => {
-  const instances = fetchGoogleCloudSqlInstances(answers.googleCloudProject)
-  const filtered = searchByKey(instances, 'connectionName', input)
-
-  return filtered.map(formatInstance)
+const formatInstance = (instance: GoogleCloudSqlInstance) => ({
+  name: `${instance.name} (${instance.region})`,
+  short: instance.name,
+  value: pick(instance, 'connectionName', 'port') as DatabaseInstance,
 })
 
-export const googleCloudSqlInstancePrompt = {
-  type: 'autocomplete',
-  name: 'databaseInstance',
-  message: 'Choose Google Cloud SQL instance:',
-  source,
-  when: (answers: ConfigurationCreateAnswers) => answers.databaseType === 'cloudsql',
-}
+export const promptGoogleCloudSqlInstance = (googleCloudProject: string): Promise<DatabaseInstance> =>
+  search({
+    message: 'Choose Google Cloud SQL instance:',
+    source: async (term) => {
+      const instances = await fetchGoogleCloudSqlInstances(googleCloudProject)
+      const filtered = searchByKey(instances, 'connectionName', term)
+      return filtered.map(formatInstance)
+    },
+  })

@@ -1,12 +1,12 @@
 import memoize from 'memoizee'
-import { execCommand, execCommandMultiline } from '../util/exec.js'
+import { execCommandAsync, execCommandMultilineAsync } from '../util/exec.js'
 
-export const fetchKubernetesCurrentContext = (): string => {
-  return execCommand(`kubectl config current-context`)
+export const fetchKubernetesCurrentContext = async (): Promise<string> => {
+  return execCommandAsync(`kubectl config current-context`)
 }
 
-export const fetchKubernetesContexts = memoize((): string[] => {
-  return execCommandMultiline(`
+export const fetchKubernetesContexts = memoize(async (): Promise<string[]> => {
+  return execCommandMultilineAsync(`
     kubectl config get-contexts --output='name'
   `)
-})
+}, { promise: true })

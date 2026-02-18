@@ -1,10 +1,10 @@
 import memoize from 'memoizee'
-import { execCommandMultiline } from '../util/exec.js'
+import { execCommandMultilineAsync } from '../util/exec.js'
 
-export const fetchKubernetesNamespaces = memoize((context: string): string[] => {
-  return execCommandMultiline(`
+export const fetchKubernetesNamespaces = memoize(async (context: string): Promise<string[]> => {
+  return execCommandMultilineAsync(`
     kubectl get namespaces \
       --context="${context}" \
       --output='jsonpath={range .items[*]}{.metadata.name}{"\\n"}{end}'
   `)
-})
+}, { promise: true })

@@ -1,39 +1,46 @@
 import chalk from 'chalk'
-import inquirer from 'inquirer'
-import autocomplete from 'inquirer-autocomplete-prompt'
 import { saveConfiguration } from '../../lib/configurations/index.js'
-import { ConfigurationCreateAnswers } from '../../lib/types.js'
-import { googleAlloyDbInstancePrompt } from './prompts/google-alloydb-instance.js'
-import { configurationNamePrompt } from './prompts/configuration-name.js'
-import { confirmationPrompt } from './prompts/confirmation.js'
-import { databaseTypePrompt } from './prompts/database-type.js'
-import { googleCloudProjectPrompt } from './prompts/google-cloud-project.js'
-import { googleCloudSqlInstancePrompt } from './prompts/google-cloud-sql-instance.js'
-import { kubernetesContextPrompt } from './prompts/kubernetes-context.js'
-import { kubernetesNamespacePrompt } from './prompts/kubernetes-namespace.js'
-import { kubernetesServiceAccountPrompt } from './prompts/kubernetes-service-account.js'
-import { localPortPrompt } from './prompts/local-port.js'
+import { promptGoogleAlloyDbInstance } from './prompts/google-alloydb-instance.js'
+import { promptConfigurationName } from './prompts/configuration-name.js'
+import { promptConfirmation } from './prompts/confirmation.js'
+import { promptDatabaseType } from './prompts/database-type.js'
+import { promptGoogleCloudProject } from './prompts/google-cloud-project.js'
+import { promptGoogleCloudSqlInstance } from './prompts/google-cloud-sql-instance.js'
+import { promptKubernetesContext } from './prompts/kubernetes-context.js'
+import { promptKubernetesNamespace } from './prompts/kubernetes-namespace.js'
+import { promptKubernetesServiceAccount } from './prompts/kubernetes-service-account.js'
+import { promptLocalPort } from './prompts/local-port.js'
 
 export const createConfiguration = async () => {
-  inquirer.registerPrompt('autocomplete', autocomplete)
+  const googleCloudProject = await promptGoogleCloudProject()
+  const databaseType = await promptDatabaseType()
 
-  const answers = await inquirer.prompt<ConfigurationCreateAnswers>([
-    googleCloudProjectPrompt,
-    databaseTypePrompt,
-    googleCloudSqlInstancePrompt,
-    googleAlloyDbInstancePrompt,
-    kubernetesContextPrompt,
-    kubernetesNamespacePrompt,
-    kubernetesServiceAccountPrompt,
-    localPortPrompt,
-    configurationNamePrompt,
-    confirmationPrompt,
-  ])
+  const databaseInstance = databaseType === 'cloudsql'
+    ? await promptGoogleCloudSqlInstance(googleCloudProject)
+    : await promptGoogleAlloyDbInstance(googleCloudProject)
 
-  if (answers.confirmation) {
-    saveConfiguration(answers)
+  const kubernetesContext = await promptKubernetesContext()
+  const kubernetesNamespace = await promptKubernetesNamespace(kubernetesContext)
+  const kubernetesServiceAccount = await promptKubernetesServiceAccount(
+    kubernetesContext,
+    kubernetesNamespace,
+  )
+  const localPort = await promptLocalPort()
+  const configurationName = await promptConfigurationName()
+  const confirmation = await promptConfirmation()
 
-    console.log(chalk.green(`Saved configuration '${chalk.bold(answers.configurationName)}'.`))
+  if (confirmation) {
+    saveConfiguration({
+      configurationName,
+      databaseType,
+      databaseInstance,
+      kubernetesContext,
+      kubernetesNamespace,
+      kubernetesServiceAccount,
+      localPort: localPort ?? 5432,
+    })
+
+    console.log(chalk.green(`Saved configuration '${chalk.bold(configurationName)}'.`))
   }
   else {
     console.log(chalk.red('You are excused.'))

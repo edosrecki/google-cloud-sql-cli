@@ -1,5 +1,4 @@
-export const configurationNamePrompt = {
-  type: 'input',
-  name: 'configurationName',
-  message: 'Enter configuration name:',
-}
+import { input } from '@inquirer/prompts'
+
+export const promptConfigurationName = (): Promise<string> =>
+  input({ message: 'Enter configuration name:' })

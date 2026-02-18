@@ -1,16 +1,12 @@
+import { search } from '@inquirer/prompts'
 import { fetchKubernetesNamespaces } from '../../../lib/kubectl/namespaces.js'
-import { ConfigurationCreateAnswers } from '../../../lib/types.js'
-import { search } from '../../../lib/util/search.js'
-import { tryCatch } from '../../../lib/util/error.js'
+import { search as fuzzySearch } from '../../../lib/util/search.js'
 
-const source = tryCatch((answers: ConfigurationCreateAnswers, input?: string) => {
-  const instances = fetchKubernetesNamespaces(answers.kubernetesContext)
-  return search(instances, input)
-})
-
-export const kubernetesNamespacePrompt = {
-  type: 'autocomplete',
-  name: 'kubernetesNamespace',
-  message: 'Choose Kubernetes namespace:',
-  source,
-}
+export const promptKubernetesNamespace = (kubernetesContext: string): Promise<string> =>
+  search({
+    message: 'Choose Kubernetes namespace:',
+    source: async (term) => {
+      const namespaces = await fetchKubernetesNamespaces(kubernetesContext)
+      return fuzzySearch(namespaces, term)
+    },
+  })

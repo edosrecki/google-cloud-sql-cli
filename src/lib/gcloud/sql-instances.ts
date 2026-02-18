@@ -1,5 +1,5 @@
 import memoize from 'memoizee'
-import { execCommandMultiline } from '../util/exec.js'
+import { execCommandMultilineAsync } from '../util/exec.js'
 
 export type GoogleCloudSqlInstance = {
   name: string
@@ -24,8 +24,8 @@ const parseInstance = (instance: string): GoogleCloudSqlInstance => {
 }
 
 export const fetchGoogleCloudSqlInstances = memoize(
-  (project: string): GoogleCloudSqlInstance[] => {
-    const instances = execCommandMultiline(`
+  async (project: string): Promise<GoogleCloudSqlInstance[]> => {
+    const instances = await execCommandMultilineAsync(`
       gcloud sql instances list \
         --project=${project} \
         --format='csv(connectionName,databaseVersion)' \
@@ -35,4 +35,5 @@ export const fetchGoogleCloudSqlInstances = memoize(
     // skip header line
     return instances.slice(1).map(parseInstance)
   },
+  { promise: true },
 )

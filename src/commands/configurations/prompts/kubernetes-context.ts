@@ -1,16 +1,12 @@
+import { search } from '@inquirer/prompts'
 import { fetchKubernetesContexts } from '../../../lib/kubectl/contexts.js'
-import { ConfigurationCreateAnswers } from '../../../lib/types.js'
-import { search } from '../../../lib/util/search.js'
-import { tryCatch } from '../../../lib/util/error.js'
+import { search as fuzzySearch } from '../../../lib/util/search.js'
 
-const source = tryCatch((answers: ConfigurationCreateAnswers, input?: string) => {
-  const instances = fetchKubernetesContexts()
-  return search(instances, input)
-})
-
-export const kubernetesContextPrompt = {
-  type: 'autocomplete',
-  name: 'kubernetesContext',
-  message: 'Choose Kubernetes context:',
-  source,
-}
+export const promptKubernetesContext = (): Promise<string> =>
+  search({
+    message: 'Choose Kubernetes context:',
+    source: async (term) => {
+      const contexts = await fetchKubernetesContexts()
+      return fuzzySearch(contexts, term)
+    },
+  })

@@ -1,19 +1,18 @@
+import { search } from '@inquirer/prompts'
 import { fetchKubernetesServiceAccounts } from '../../../lib/kubectl/service-accounts.js'
-import { ConfigurationCreateAnswers } from '../../../lib/types.js'
-import { search } from '../../../lib/util/search.js'
-import { tryCatch } from '../../../lib/util/error.js'
+import { search as fuzzySearch } from '../../../lib/util/search.js'
 
-const source = tryCatch((answers: ConfigurationCreateAnswers, input?: string) => {
-  const instances = fetchKubernetesServiceAccounts(
-    answers.kubernetesContext,
-    answers.kubernetesNamespace,
-  )
-  return search(instances, input)
-})
-
-export const kubernetesServiceAccountPrompt = {
-  type: 'autocomplete',
-  name: 'kubernetesServiceAccount',
-  message: 'Choose Kubernetes service account:',
-  source,
-}
+export const promptKubernetesServiceAccount = (
+  kubernetesContext: string,
+  kubernetesNamespace: string,
+): Promise<string> =>
+  search({
+    message: 'Choose Kubernetes service account:',
+    source: async (term) => {
+      const serviceAccounts = await fetchKubernetesServiceAccounts(
+        kubernetesContext,
+        kubernetesNamespace,
+      )
+      return fuzzySearch(serviceAccounts, term)
+    },
+  })

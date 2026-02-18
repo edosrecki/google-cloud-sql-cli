@@ -1,19 +1,18 @@
 import exitHook from 'exit-hook'
-import { omit, kebabCase } from 'lodash-es'
+import { kebabCase } from 'lodash-es'
 import {
   deletePod,
   portForward,
   runProxyPod,
   waitForPodReady,
 } from '../kubectl/pods.js'
-import { Configuration, ConfigurationCreateAnswers } from '../types.js'
+import { Configuration } from '../types.js'
 import { appendOrReplaceByKey, deleteByKey, findByKey } from '../util/array.js'
 import { randomString } from '../util/string.js'
 import { store } from './store.js'
 import { configurationsKey } from './constants.js'
 
 const searchKey = 'configurationName' as const
-const excludeProperties = ['googleCloudProject', 'confirmation'] as const
 
 export const configurationPath = store.path
 
@@ -26,9 +25,7 @@ export const getConfiguration = (name: string): Configuration | undefined => {
   return findByKey(configurations, searchKey, name)
 }
 
-export const saveConfiguration = (answers: ConfigurationCreateAnswers): void => {
-  const configuration = omit(answers, excludeProperties)
-
+export const saveConfiguration = (configuration: Configuration): void => {
   const configurations = store.get(configurationsKey)
   appendOrReplaceByKey(configurations, configuration, searchKey)
   store.set(configurationsKey, configurations)

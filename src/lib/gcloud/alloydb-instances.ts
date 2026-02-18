@@ -1,5 +1,5 @@
 import memoize from 'memoizee'
-import { execCommandMultiline } from '../util/exec.js'
+import { execCommandMultilineAsync } from '../util/exec.js'
 
 export type GoogleAlloyDbInstance = {
   name: string
@@ -26,9 +26,9 @@ const parseInstance = (connectionName: string): GoogleAlloyDbInstance => {
 }
 
 export const fetchGoogleAlloyDbInstances = memoize(
-  (project: string): GoogleAlloyDbInstance[] => {
+  async (project: string): Promise<GoogleAlloyDbInstance[]> => {
     try {
-      const instances = execCommandMultiline(`
+      const instances = await execCommandMultilineAsync(`
         gcloud alloydb instances list \
           --project=${project} \
           --format='csv(name)' \
@@ -41,4 +41,5 @@ export const fetchGoogleAlloyDbInstances = memoize(
       return []
     }
   },
+  { promise: true },
 )

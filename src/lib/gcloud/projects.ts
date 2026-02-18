@@ -1,8 +1,8 @@
 import memoize from 'memoizee'
-import { execCommandMultiline } from '../util/exec.js'
+import { execCommandMultilineAsync } from '../util/exec.js'
 
-export const fetchGoogleCloudProjects = memoize((): string[] => {
-  return execCommandMultiline(`
+export const fetchGoogleCloudProjects = memoize(async (): Promise<string[]> => {
+  return execCommandMultilineAsync(`
     gcloud projects list --format='value(projectId)'
   `)
-})
+}, { promise: true })

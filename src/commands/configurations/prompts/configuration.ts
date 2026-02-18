@@ -1,26 +1,20 @@
+import { search } from '@inquirer/prompts'
 import { getConfigurations } from '../../../lib/configurations/index.js'
-import { Configuration, ConfigurationChooseAnswers } from '../../../lib/types.js'
+import { Configuration } from '../../../lib/types.js'
 import { searchByKey } from '../../../lib/util/search.js'
-import { tryCatch } from '../../../lib/util/error.js'
 
-const formatConfiguration = (configuration: Configuration) => {
-  return {
-    name: configuration.configurationName,
-    short: configuration.configurationName,
-    value: configuration,
-  }
-}
-
-const source = tryCatch((answers: ConfigurationChooseAnswers, input?: string) => {
-  const configurations = getConfigurations()
-  const filtered = searchByKey(configurations, 'configurationName', input)
-
-  return filtered.map(formatConfiguration)
+const formatConfiguration = (configuration: Configuration) => ({
+  name: configuration.configurationName,
+  short: configuration.configurationName,
+  value: configuration,
 })
 
-export const configurationPrompt = {
-  type: 'autocomplete',
-  name: 'configuration',
-  message: 'Choose configuration:',
-  source,
-}
+export const promptConfiguration = (): Promise<Configuration> =>
+  search({
+    message: 'Choose configuration:',
+    source: async (term) => {
+      const configurations = getConfigurations()
+      const filtered = searchByKey(configurations, 'configurationName', term)
+      return filtered.map(formatConfiguration)
+    },
+  })

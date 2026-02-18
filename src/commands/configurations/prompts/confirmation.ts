@@ -1,5 +1,4 @@
-export const confirmationPrompt = {
-  type: 'confirm',
-  name: 'confirmation',
-  message: 'Do you want to proceed?',
-}
+import { confirm } from '@inquirer/prompts'
+
+export const promptConfirmation = (): Promise<boolean> =>
+  confirm({ message: 'Do you want to proceed?' })

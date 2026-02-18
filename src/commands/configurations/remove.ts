@@ -1,19 +1,11 @@
 import chalk from 'chalk'
-import inquirer from 'inquirer'
-import autocomplete from 'inquirer-autocomplete-prompt'
 import { deleteConfiguration } from '../../lib/configurations/index.js'
-import { ConfigurationChooseAnswers } from '../../lib/types.js'
-import { configurationPrompt } from './prompts/configuration.js'
-import { confirmationPrompt } from './prompts/confirmation.js'
+import { promptConfiguration } from './prompts/configuration.js'
+import { promptConfirmation } from './prompts/confirmation.js'
 
 export const removeConfiguration = async () => {
-  inquirer.registerPrompt('autocomplete', autocomplete)
-
-  const { configuration, confirmation }
-    = await inquirer.prompt<ConfigurationChooseAnswers>([
-      configurationPrompt,
-      confirmationPrompt,
-    ])
+  const configuration = await promptConfiguration()
+  const confirmation = await promptConfirmation()
 
   if (confirmation) {
     deleteConfiguration(configuration.configurationName)

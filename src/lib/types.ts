@@ -14,13 +14,3 @@ export type Configuration = {
   kubernetesServiceAccount: string
   localPort: number
 }
-
-export type ConfigurationCreateAnswers = Configuration & {
-  googleCloudProject: string
-  confirmation: boolean
-}
-
-export type ConfigurationChooseAnswers = {
-  configuration: Configuration
-  confirmation?: boolean
-}
