@@ -6,6 +6,5 @@ export default defineConfig({
   format: ['cjs'],
   platform: 'node',
   noExternal: /^.*$/,
-  external: ['shelljs'],
   failOnWarn: false,
 })

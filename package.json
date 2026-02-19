@@ -48,7 +48,6 @@
     "fuse.js": "7.1.0",
     "lodash-es": "4.17.23",
     "memoizee": "0.4.17",
-    "shelljs": "0.10.0",
     "update-notifier": "7.3.1"
   },
   "devDependencies": {
@@ -61,7 +60,6 @@
     "@types/lodash-es": "4.17.12",
     "@types/memoizee": "0.4.12",
     "@types/node": "24.10.6",
-    "@types/shelljs": "0.10.0",
     "@types/update-notifier": "6.0.8",
     "@yao-pkg/pkg": "6.14.0",
     "eslint": "10.0.0",
